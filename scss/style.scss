@@ -1,0 +1,276 @@
+:root {
+  --yellow: #fee63c;
+  --orange-red: #b25104;
+  --orange-red-opaque: #b2510488;
+  --overlay: #000000bb;
+}
+nav a {
+  color: black;
+}
+body {
+  overflow-x: hidden;
+  background-color: white;
+  font-family: 'Roboto', sans-serif;
+}
+h1 {
+  font-family: 'Roboto Slab', serif;
+}
+#navbar-main, #navbar-main img {
+  transition: .05s all;
+}
+#navbar-main a img {
+  max-height: 80px;
+}
+#navbar-main a {
+  color: white;
+}
+.navbar-toggler {
+  border-color: white;
+}
+.navbar-toggler i {
+  color: white !important;
+  font-size: 36px;
+}
+.dropdown-menu a {
+  color: black !important;
+  border-bottom: 1px #ddd solid;
+}
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+#landing-page {
+  z-index: 1;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#landing-page-bg{
+  filter: grayscale(50%);
+  background-image: url(../img/newhero.jpg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-attachment:scroll;
+  z-index: 2;
+}
+#landing-page-opaque {
+  z-index: 3;
+  background-color: var(--overlay);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#landing-page h1, #landing-page h4, main .header h1{
+  z-index: 10;
+  text-shadow: -1px 1px 5px #00000044;
+}
+#landing-page h1, main .header h1 {
+  font-size: 72px;
+}
+#landing-page h4 {
+  font-size: 32px;
+}
+#landing-page #cta-btn {
+  margin-top: 72px;
+}
+#landing-page-text {
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#landing-page a {
+  color: white;
+}
+section {
+  position: relative;
+  z-index: 10;
+  padding: 64px;
+  background-color: white;
+}
+section header h2, section header p {
+  text-align: center;
+}
+section header h2 {
+  font-size: 40px;
+}
+.section-body {
+  padding-top: 64px;
+}
+#section-1 {
+  text-align: center;
+}
+#section-1 .fas {
+  margin: auto;
+  font-size: 120px;
+  text-shadow: -1px 1px 3px black;
+}
+#accolades {
+
+}
+#accolades .fas {
+  margin-bottom: 20px;
+}
+.fa-trophy {
+  color: gold;
+}
+.fa-money-bill-alt {
+  color:green;
+}
+.fa-hand-holding-heart {
+  color: crimson;
+}
+#section-2 {
+  background-color: #eee;
+}
+#view-mores {
+  padding: 64px;
+  border-radius: 2px;
+}
+.testimonial {
+  padding: 32px;
+}
+.testimonial img {
+  border-radius: 50%;
+  max-width: 100%;
+}
+.testimonial .quote {
+
+}
+.testimonial .customer-city {
+  font-style: italic;
+}
+.section-footer {
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+}
+.section-footer .btn-lg {
+  text-align: center;
+  margin: auto;
+}
+#contact-section {
+  position: relative;
+  z-index: 1000;
+}
+#address, #contact-form {
+  position: relative;
+}
+#social-nav {
+  margin: auto;
+  margin-top: 64px;
+}
+#social-nav li{
+  text-decoration: none;
+  display: inline-block;
+  padding: 16px;
+}
+#social-nav li a i{
+  font-size: 44px;
+  color: white;
+}
+#map {
+  padding: 0;
+  margin: 0;
+  height: 600px;
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+}
+footer {
+  background-color: white;
+  text-align: center;
+  color: black;
+  position: relative;
+  z-index: 1000;
+}
+.non-index {
+  background: white;
+
+}
+.non-index .header {
+  margin-top: 100px;
+  height: 400px;
+  width: 100%;
+  position: relative;
+}
+.non-index .header .header-bg {
+  background-image: url(../img/tilepencil.jpg);
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 400px;
+  min-height: 400px;
+  margin-top: 100px;
+}
+.non-index .header .header-opaque {
+  background: var(--overlay);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 400px;
+  min-height: 400px;
+  margin-top: 100px;
+}
+.non-index .header-text {
+  position: relative;
+  z-index: 20;
+  color: white;
+}
+main .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#services-text {
+  position: relative;
+  z-index: 100;
+}
+main {
+  position: relative;
+  z-index: 999;
+}
+main section {
+  margin: 0;
+  padding: 0;
+}
+main #section-2 {
+  background-color: inherit;
+}
+#contact-address {
+  position: relative;
+  z-index: 1000;
+  width: 100%;
+}
+#contact-address-text {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+}
+#contact-page #social-nav {
+  position: relative;
+  z-index: 1000;
+  background: white;
+}
+#contact-page #social-nav a i {
+  text-align: center;
+}
+.full-page-map #map {
+  height: 70vh;
+}
