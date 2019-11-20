@@ -20,4 +20,4 @@
   </script>
 </head>
 
-<body>
+<body id="body">

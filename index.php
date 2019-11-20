@@ -8,5 +8,6 @@
 <?php include_once 'inc/section-2.php';?>
 <?php include_once 'inc/section-3.php';?>
 <?php include_once 'inc/contact.php';?>
-<?php include_once 'inc/map.php'; ?>
-<?php include_once 'inc/foot.php'; ?>
+<?php include_once 'inc/map.php';?>
+<?php include_once 'inc/back-to-top.php';?>
+<?php include_once 'inc/foot.php';?>

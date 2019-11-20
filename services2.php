@@ -6,18 +6,40 @@
   isIndex = false;
 </script>
 
+<div class="header">
+  <div class="header-bg"></div>
+  <div class="header-opaque"></div>
+  <div class="container header-text">
+    <h1>Tile Floors</h1>
+  </div>
+</div>
+<div class="container">
+  <nav aria-label="breadcrumb" class="bg-white">
+    <ol class="breadcrumb bg-white">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Services</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Tile Floors</li>
+    </ol>
+  </nav>
+</div>
+
 <main class="non-index bg-white" id="services-page">
-  <div class="header">
-    <div class="header-bg"></div>
-    <div class="header-opaque"></div>
-    <div class="container header-text">
-      <h1>Tile Floors</h1>
+
+  <div class="position-relative bg-dark z-high">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-white">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Services</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Tile Floors</li>
+        </ol>
+      </nav>
     </div>
   </div>
   <div class="bg-white p-4" id="services-text">
     <div class="container bg-white">
       <section id="section-1">
-        <h1>How Tile Floors Can Elevate a Home's Feel</h1>
+        <h2>How Tile Floors Can Elevate a Home's Feel</h2>
         <p>If you've been thinking about installing new flooring in your bathroom, kitchen, living room, or any other room of the house, then you should look at tile. This type of flooring material is used in many rooms of the house throughout the country. In fact, in hot areas of the country, such as Arizona and southern Texas, it's even used in bedrooms. Tile flooring is a versatile option for many homeowners, and it can add beauty and possibly even value to your existing home. </p>
       </section>
       <section id="section-2">
@@ -44,5 +66,4 @@
 </main>
 <?php include_once 'inc/contact.php'; ?>
 <?php include_once 'inc/map.php'; ?>
-<?php include_once 'inc/back-to-top.php';?>
 <?php include_once 'inc/foot.php'; ?>

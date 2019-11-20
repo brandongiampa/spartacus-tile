@@ -5,6 +5,7 @@ $(document).ready(setUpNavbarColoration);
 $(document).ready(determineNavBarColor);
 $(document).ready(determineCardContainerPadding);
 $(document).ready(onResize);
+$(document).ready(determineBackToTopVisibility);
 
 function setUpNavbarColoration(){
   $(window).on('scroll', onScroll);
@@ -16,8 +17,20 @@ function onScroll() {
       determineNavBarColor();
       determineHeroTextFade();
       moveHeroImageTop();
+      determineBackToTopVisibility();
       scrolling = false;
     }), 25;
+  }
+}
+function determineBackToTopVisibility(){
+  let y = $(window).scrollTop();
+  if (y>=500){
+    $('#back-to-top').css('visibility', 'visible');
+    $('#back-to-top').css('opacity', '1');
+  }
+  else {
+    $('#back-to-top').css('visibility', 'hidden');
+    $('#back-to-top').css('opacity', '0');
   }
 }
 function moveHeroImageTop() {
@@ -78,6 +91,7 @@ function onResize() {
     determineCardContainerPadding();
     determineNavBarColor();
     determineHeroTextFade();
+    determineBackToTopVisibility();
   });
 }
 // Initialize and add the map
