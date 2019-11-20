@@ -1,11 +1,28 @@
 var navbar = $('#navbar-main');
 var scrolling = false;
 
-$(document).ready(onLoadOrResize);
+$(document).ready(onLoad);
 
-function onLoadOrResize() {
-  $(window).on('resize', onLoadOrResize);
+function onLoad() {
+  clearInputs();
+
+  $(window).on('resize', onResize);
   $(window).on('scroll', onScroll);
+
+  setUpInputAuthorization();
+
+  setSmoothScroll();
+  determineNavBarColor();
+  determineCardContainerPadding();
+  determineBackToTopVisibility();
+  moveHeroImageTop();
+}
+function setUpInputAuthorization(){
+  $('#name').on('keyup', validateInputs);
+  $('#email').on('keyup', validateInputs);
+  $('#message').on('keyup', validateInputs);
+}
+function onResize() {
   setSmoothScroll();
   determineNavBarColor();
   determineCardContainerPadding();
@@ -119,4 +136,37 @@ function initMap() {
   marker.addListener('mouseout', function(){
     infoWindow.close(map, marker);
   });
+}
+function validateInputs() {
+  if (nameReady() && emailReady() && messageReady()){
+    $('#submit').prop('disabled', false);
+  }
+  else {
+    $('#submit').prop('disabled', true);
+  }
+}
+function nameReady(){
+  if ($('#name').val() === "") {
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+function emailReady(){
+  let exp = /[A-Za-z]+.*@[A-Za-z]+.*\.[A-Za-z]+/;
+  return exp.test($('#email').val());
+}
+function messageReady(){
+  if ($('#name').val() === "") {
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+function clearInputs() {
+  $('#email').val("");
+  $('#name').val("");
+  $('#message').val("");
 }
