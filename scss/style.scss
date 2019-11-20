@@ -166,6 +166,7 @@ section header h2 {
 #contact-section {
   position: relative;
   z-index: 1000;
+  clear: both;
 }
 #address, #contact-form {
   position: relative;
@@ -310,4 +311,8 @@ footer {
   line-height: 56px;
   color: white;
   font-size: 56px;
+}
+figure, figure img, figcaption{
+  position: relative;
+  z-index: 2003;
 }

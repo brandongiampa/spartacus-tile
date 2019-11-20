@@ -1,7 +1,7 @@
 <section class="container-fluid bg-primary text-white py-4" id="contact-section">
   <div class="row">
-    <div class="col-md-3 p-5">
-      <img src="img/spartacus_tile_icon_white.png" alt="">
+    <div class="col-md-3 px-5">
+      <img src="img/spartacus_tile_icon_white.png" alt="" class="p-5">
     </div>
     <div class="container-fluid col-12 col-md-4">
       <div class="container" id="address">
@@ -47,16 +47,16 @@
       <form>
         <h3>Send us a message!</h3>
         <div class="form-group">
-          <label for="exampleFormControlInput1">Name</label>
-          <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="John Doe">
+          <label for="name">Name</label>
+          <input type="name" class="form-control" id="name" placeholder="John Doe" required>
         </div>
         <div class="form-group">
-          <label for="exampleFormControlInput2">Email address</label>
-          <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
         </div>
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" placeholder="message"></textarea>
+          <textarea class="form-control" id="message" rows="7" placeholder="message"></textarea>
         </div>
         <input type="submit" value="Send" class="btn btn-secondary btn-outline border-3px border-white" id="submit" disabled>
       </form>
