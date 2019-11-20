@@ -19,8 +19,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHlWylCMw9F4tCNyrld-seDWF
   // Get the current year for the copyright
   $('#year').text(new Date().getFullYear());
 </script>
-<script src="js/app.js"></script>
-<script src="js/smooth-scroll.js"></script>
+<script src="js/main.js"></script>
 </body>
 
 </html>

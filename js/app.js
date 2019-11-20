@@ -7,7 +7,6 @@ $(document).ready(determineCardContainerPadding);
 $(document).ready(onResize);
 $(document).ready(determineBackToTopVisibility);
 
-console.log($('#section-3').css('zIndex'))
 function setUpNavbarColoration(){
   $(window).on('scroll', onScroll);
 }
