@@ -32,7 +32,10 @@
       }
     }
   }else {
-    $msg = "Please fill in all fields.";
-    $msgClass = "alert-danger";
+
+    if (!(empty($name) && empty($email) && empty($message))){
+      $msg = "Please fill in all fields.";
+      $msgClass = "alert-danger";
+    }
   }
 ?>
