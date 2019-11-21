@@ -9,7 +9,7 @@ function onLoad() {
   $(window).on('resize', onResize);
   $(window).on('scroll', onScroll);
 
-  setUpInputAuthorization();
+  setUpInputValidation();
 
   setSmoothScroll();
   determineNavBarColor();
@@ -17,7 +17,7 @@ function onLoad() {
   determineBackToTopVisibility();
   moveHeroImageTop();
 }
-function setUpInputAuthorization(){
+function setUpInputValidation(){
   $('#name').on('keyup', validateInputs);
   $('#email').on('keyup', validateInputs);
   $('#message').on('keyup', validateInputs);
@@ -158,12 +158,13 @@ function emailReady(){
   return exp.test($('#email').val());
 }
 function messageReady(){
-  if ($('#name').val() === "") {
+  if ($('#message').val() === "") {
     return false;
   }
   else {
     return true;
   }
+  console.log($('#name').val())
 }
 function clearInputs() {
   $('#email').val("");
