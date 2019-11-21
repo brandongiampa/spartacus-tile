@@ -60,22 +60,7 @@
         </div>
       </div>
       <div class="col-12 col-md-7 p-5" id="contact-form">
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-          <h3>Send us a message!</h3>
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="name" class="form-control" id="name" placeholder="John Doe" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea class="form-control" id="message" rows="7" placeholder="message"></textarea>
-          </div>
-          <input type="submit" value="Send" class="btn btn-secondary btn-outline border-3px border-white" id="submit" disabled>
-        </form>
+        <?php include_once 'inc/contact-form.php';?>
       </div>
     </div>
     <div class="full-page-map">
