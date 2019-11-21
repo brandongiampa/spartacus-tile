@@ -203,7 +203,6 @@ footer {
   position: relative; }
 
 .non-index .header .header-bg {
-  background-image: url(../img/tilepencil.jpg);
   background-position: center;
   position: fixed;
   top: 0;
@@ -212,6 +211,9 @@ footer {
   max-height: 400px;
   min-height: 400px;
   margin-top: 100px; }
+
+#services-page .header-bg {
+  background-image: url(../img/tilepencil.jpg); }
 
 .non-index .header .header-opaque {
   background: var(--overlay);
@@ -268,13 +270,14 @@ main #section-2 {
   align-items: center;
   justify-content: center; }
 
-#contact-page #social-nav {
+#contact-page #social-nav-wrapper {
   position: relative;
   z-index: 1000;
-  background: white; }
+  background: white;
+  display: flex; }
 
-#contact-page #social-nav a i {
-  text-align: center; }
+#contact-page #social-nav {
+  margin-top: 12px; }
 
 .full-page-map #map {
   height: 70vh; }
@@ -308,3 +311,10 @@ footer {
 figure, figure img, figcaption {
   position: relative;
   z-index: 2003; }
+
+#non-header {
+  position: relative;
+  z-index: 100; }
+
+#contact-page .header-bg {
+  background-image: url(../img/phones.jpg); }
