@@ -1,4 +1,5 @@
 var navbar = $('#navbar-main');
+var landingPage = $('#landing-page');
 var scrolling = false;
 
 $(document).ready(onLoad);
@@ -11,7 +12,6 @@ function onLoad() {
   $(window).on('scroll', onScroll);
 
   setUpInputValidation();
-
   setSmoothScroll();
   determineNavBarColor();
   determineCardContainerPadding();
@@ -47,8 +47,7 @@ function moveHeroImageTop() {
   if (isIndex) {
     $('#landing-page-bg').css('top', -y);
     $('#landing-page-opaque').css('top', -y);
-  }
-  else {
+  }else {
     $('.header-bg').css('top', -y);
     $('.header-opaque').css('top', -y);
   }
@@ -58,8 +57,7 @@ function determineBackToTopVisibility(){
   if (y>=500){
     $('#back-to-top').css('visibility', 'visible');
     $('#back-to-top').css('opacity', '1');
-  }
-  else {
+  }else {
     $('#back-to-top').css('visibility', 'hidden');
     $('#back-to-top').css('opacity', '0');
   }
@@ -87,8 +85,8 @@ function determineNavBarColor() {
     return false; //escaping function
   }
   let y = $(window).scrollTop();
-  let top = $('#landing-page').position().top;
-  let bottom = top + $('#landing-page').outerHeight(true);
+  let top = landingPage.position().top;
+  let bottom = top + landingPage.outerHeight(true);
   var multiplier = y/(bottom-100);
 
   navbar.css('backgroundColor', 'rgba(0,0,0,' + multiplier.toString() + ')');
@@ -98,14 +96,12 @@ function setSmoothScroll() {
     if (window.innerWidth > 900){
       e.preventDefault();
 
-      var navbarHeight = $('#navbar-main').height();
+      var navbarHeight = navbar.height();
       var padding = calculatePadding();
 
       var target;
       target = this.hash;
-
       var $target = $(target);
-
       //scroll and show hash
       $('html, body').animate({
         'scrollTop': $target.offset().top-navbarHeight-padding
@@ -114,8 +110,8 @@ function setSmoothScroll() {
   });
 }
 function calculatePadding() {
-  var pTop = $('#navbar-main').css('paddingTop');
-  var pBottom = $('#navbar-main').css('paddingBottom');
+  var pTop = navbar.css('paddingTop');
+  var pBottom = navbar.css('paddingBottom');
 
   var topInt = parseInt(pTop.substring(0, pTop.length-2));
   var bottomInt = parseInt(pTop.substring(0, pBottom.length-2));
@@ -142,16 +138,14 @@ function initMap() {
 function validateInputs() {
   if (nameReady() && emailReady() && messageReady()){
     $('#submit').prop('disabled', false);
-  }
-  else {
+  }else {
     $('#submit').prop('disabled', true);
   }
 }
 function nameReady(){
   if ($('#name').val() === "") {
     return false;
-  }
-  else {
+  }else {
     return true;
   }
 }
@@ -162,8 +156,7 @@ function emailReady(){
 function messageReady(){
   if ($('#message').val() === "") {
     return false;
-  }
-  else {
+  }else {
     return true;
   }
   console.log($('#name').val())
