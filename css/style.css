@@ -105,7 +105,9 @@ section header h2 {
   font-size: 40px; }
 
 .section-body {
-  padding-top: 64px; }
+  padding-top: 64px;
+  position: relative;
+  z-index: 1001; }
 
 #section-1 {
   text-align: center; }
@@ -214,6 +216,9 @@ footer {
 
 #services-page .header-bg {
   background-image: url(../img/tilepencil.jpg); }
+
+#testimonials-page .header-bg {
+  background-image: url(../img/handshake1.jpg); }
 
 .non-index .header .header-opaque {
   background: var(--overlay);
