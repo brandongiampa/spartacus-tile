@@ -4,6 +4,7 @@ var scrolling = false;
 $(document).ready(onLoad);
 
 function onLoad() {
+  scrollToCorrectWindowTop();
   clearInputs();
 
   $(window).on('resize', onResize);
@@ -36,6 +37,7 @@ function onScroll() {
       determineNavBarColor();
       moveHeroImageTop();
       determineBackToTopVisibility();
+      trackScrollTopForSubmit();
       scrolling = false;
     }), 25;
   }
@@ -170,4 +172,13 @@ function clearInputs() {
   $('#email').val("");
   $('#name').val("");
   $('#message').val("");
+}
+function trackScrollTopForSubmit() {
+  $('#scrollTop').val($(window).scrollTop());
+}
+function scrollToCorrectWindowTop(){
+  if (scrollTop !== undefined){
+    $(window).scrollTop(scrollTop);
+  }
+  scrollTop = 0;
 }
