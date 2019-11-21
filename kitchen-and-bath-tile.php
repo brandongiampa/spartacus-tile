@@ -11,7 +11,7 @@
     <div class="header-bg"></div>
     <div class="header-opaque"></div>
     <div class="container header-text">
-      <h1>Tile Floors</h1>
+      <h1>Kitchen and Bath Tile</h1>
     </div>
   </div>
   <div class="bg-white p-4" id="services-text">

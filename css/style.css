@@ -323,3 +323,9 @@ figure, figure img, figcaption {
 
 #contact-page .header-bg {
   background-image: url(../img/phones.jpg); }
+
+#about-page .header-bg {
+  background-image: url(../img/tile.jpg); }
+
+#about-text #section-4 {
+  clear: both; }
