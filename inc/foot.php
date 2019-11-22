@@ -14,12 +14,6 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHlWylCMw9F4tCNyrld-seDWF
   crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
   crossorigin="anonymous"></script>
-
-<script>
-  // Get the current year for the copyright
-  $('#year').text(new Date().getFullYear());
-</script>
 <script src="js/main.js"></script>
 </body>
-
 </html>

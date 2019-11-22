@@ -337,3 +337,14 @@ figure, figure img, figcaption{
 #about-text #section-4 {
   clear: both;
 }
+.header-sm {
+  margin-top: 144px;
+  width: 100%;
+  position: relative;
+}
+.header-sm h1, #login-page h6 {
+  text-align: center;
+}
+#login-page {
+  margin-bottom: 64px;
+}
