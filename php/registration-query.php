@@ -34,6 +34,10 @@
           $stmt = $con->prepare($query);
           $stmt->execute([$email, $password]);
           echo '<script>alert("Thanks!");</script>';
+          session_start();
+          $_SESSION["accountCreated"] = true;
+          $_SESSION["registerEmail"] = $register_email;
+          header('Location: account-created.php');
         }catch(PDOException $exception){
           echo '</br></br></br></br></br></br></br></br>' . $exception;
         }
@@ -43,7 +47,6 @@
       $email_is_valid = true;
       $passwords_match = true;
       $password_accepted = true;
-      header('Location: account-created.php');
     }
   }
 
