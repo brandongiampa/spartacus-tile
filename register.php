@@ -1,5 +1,6 @@
 <?php include_once 'php/send-message.php'; ?>
 <?php include_once 'php/database.php'; ?>
+<?php include_once 'php/validate.php'; ?>
 <?php include_once 'php/registration-query.php'; ?>
 <?php include_once 'inc/head.php';?>
 <div class="index">
@@ -24,6 +25,9 @@
       <?php endif;?>
   </div>
   <div class="container">
+    <div class="m-auto">
+      <h6>Do you already have an account?  <a href="login.php" class="link link-primary">Log In</a>.</h6>
+    </div>
     <div class="row">
       <div class="col-12 col-md-6 m-auto">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
