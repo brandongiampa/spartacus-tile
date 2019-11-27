@@ -8,28 +8,22 @@ function validateEmail($email){
 function validatePassword($password) {
   //whitespace
   if (rtrim($password) !== $password) {
-    echo '<script>alert("failed whitespace")</script>';
     return false;
   }
   //length
   if (strlen($password)<8 || strlen($password)>16){
-    echo '<script>alert("failed length")</script>';
     return false;
   }
   if (!preg_match('/[0-9]+/', $password)){
-    echo '<script>alert("failed numeric")</script>';
     return false;
   }
   if (!preg_match('/[A-Z]+/', $password)){
-    echo '<script>alert("failed uppercase")</script>';
     return false;
   }
   if (!preg_match('/[a-z]+/', $password)){
-    echo '<script>alert("failed lowercase")</script>';
     return false;
   }
   if (!preg_match('/[\W]+/', $password)){
-    echo '<script>alert("failed character")</script>';
     return false;
   }
   return true;

@@ -1,5 +1,9 @@
 <?php
 
+  if(isset($_SESSION['account_id'])){
+    header('Location: my-account.php');
+  }
+
   $login_email = "";
   $login_password = "";
 
@@ -21,8 +25,6 @@
         session_start();
         $_SESSION['account_id'] = $account->id;
         $_SESSION['account_email'] = $account->email;
-        $_SESSION['account_first_name'] = $account->firstName;
-        $_SESSION['account_last_name'] = $account->lastName;
         $_SESSION['account_is_activated'] = $account->isActivated;
         echo $_SESSION['account_is_activated'];
 

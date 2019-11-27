@@ -25,7 +25,7 @@
 
 <main class="non-index bg-white" id="login-page">
   <div class="header-sm">
-    <h1>Welcome, <?php echo $_SESSION['account_first_name'];?>!</h1>
+    <h1>Welcome, <?php echo $_SESSION['account_email'];?>!</h1>
   </div>
   <div class="container">
     <div class="row">
