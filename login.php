@@ -3,7 +3,6 @@
   <?php include_once 'inc/navbar.php';?>
 </div>
 <?php include_once 'php/database.php'; ?>
-<?php include_once 'php/validate.php'; ?>
 
 <script>
   isIndex = false;
@@ -15,6 +14,7 @@
     <h1>Login Page</h1>
   </div>
   <div class="container">
+    <?php include_once 'php/validate.php'; ?>
     <?php include_once 'php/login-query.php'; ?>
     <div class="m-auto">
       <h6>Do you need an account?  <a href="register.php" class="link link-primary">Register</a>.</h6>

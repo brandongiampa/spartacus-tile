@@ -1,16 +1,3 @@
-<?php
-  session_start();
-
-  if (!isset($_SESSION["accountCreated"])){
-    header('Location: login.php');
-  }
-  if (!$_SESSION["accountCreated"]){
-    header('Location: login.php');
-  }
-  $register_email = $_SESSION["registerEmail"];
-  $_SESSION["accountCreated"] = false;
-?>
-
 <?php include_once 'inc/head.php';?>
 <div class="index">
   <?php include_once 'inc/navbar.php';?>

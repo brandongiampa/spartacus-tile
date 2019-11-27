@@ -39,7 +39,15 @@
       <h6 class="text-center">It appears you have not written a testimonial yet. <a href="write-testimonial.php" class="btn btn-primary text-center">Write Testimonial</a></h6>
     </div>
   <?php
-}else {?>
+}else {
+  $_SESSION['account_id'] = $testimonial->id;
+  $_SESSION['account_first_name'] = $testimonial->first_name;
+  $_SESSION['account_last_name'] = $testimonial->last_name;
+  $_SESSION['account_city'] = $testimonial->city;
+  $_SESSION['account_pic'] = $testimonial->pic;
+  $_SESSION['account_title'] = $testimonial->title;
+  $_SESSION['account_text'] = $testimonial->text;
+  ?>
   <div class="container">
     <div class="row">
       <div class="testimonial col-12" id="my-testimonial">
@@ -62,6 +70,9 @@
                 <?php echo $testimonial->city;?>
               </span>
             </h5>
+          </div>
+          <div class="edit">
+            <a href="edit-testimonial.php" class="btn btn-primary">Edit</a>
           </div>
         </div>
       </div>

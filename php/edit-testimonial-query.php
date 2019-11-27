@@ -1,6 +1,6 @@
 <?php
 
-  if(isset($_POST['submit-testimonial'])){
+  if(isset($_POST['submit-changes'])){
 
     switch($_FILES['testimonial-pic']['error']){
       case 1: {}
@@ -26,22 +26,27 @@
 
     if(isset($picPath)&&validateImage($_FILES['testimonial-pic'])){
       try{
-        $query = 'INSERT INTO `testimonials` (`account_id`, `first_name`, `last_name`, `city`, `pic`, `title`, `text`) VALUES (?,?,?,?,?,?,?)';
+        $query = 'UPDATE `testimonials` (`first_name`, `last_name`, `city`, `pic`, `title`, `text`) VALUES (?,?,?,?,?,?) WHERE `id` = ?';
         $stmt = $con->prepare($query);
         $stmt->execute([
-          10,
           $_POST['register-first-name'],
           $_POST['register-last-name'],
           $_POST['register-city'],
           $picPath,
           $_POST['testimonial-title'],
-          $_POST['testimonial-text']
+          $_POST['testimonial-text'],
+          10
         ]);
         header('Location: my-account.php');
       }catch(PDOException $exception){
         '<div class="alert alert-danger text-center">There was an error connecting to the database: '.$exception->getMessage().'</div>';
       }
     }
+  }else {
+    $query = 'SELECT * FROM `testimonials` WHERE `account_id` = ?';
+    $stmt = $con->prepare($query);
+    $stmt->execute([10]);
+    $testimonial = $stmt->fetch(PDO::FETCH_OBJ);
   }
   function validateImage($img){
     if (!validateImageSize($img)){
