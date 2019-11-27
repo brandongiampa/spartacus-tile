@@ -26,7 +26,6 @@
         $_SESSION['account_id'] = $account->id;
         $_SESSION['account_email'] = $account->email;
         $_SESSION['account_is_activated'] = $account->isActivated;
-        echo $_SESSION['account_is_activated'];
 
         if ($_SESSION['account_is_activated'] === 0){
           header('Location: account-not-active.php');

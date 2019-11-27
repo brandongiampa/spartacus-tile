@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php include_once 'php/database.php'; ?>
 <?php
   if (!isset($_SESSION['account_id'])){
     header('Location: login.php');
@@ -7,13 +8,20 @@
   if($_SESSION['account_is_activated']===0){
     header('Location: account-not-active.php');
   }
+
+  $query = "SELECT COUNT(*) FROM `testimonials` WHERE `account_id` = ?";
+  $stmt = $con->prepare($query);
+  $stmt->execute([$_SESSION['account_id']]);
+
+  if ($stmt->fetchColumn()>0){
+    header('Location: my-account.php');
+  }
 ?>
 
 <?php include_once 'inc/head.php';?>
 <div class="index">
   <?php include_once 'inc/navbar.php';?>
 </div>
-<?php include_once 'php/database.php'; ?>
 <?php include_once 'php/validate.php'; ?>
 
 

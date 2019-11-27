@@ -1,3 +1,8 @@
+<?php session_start(); ?>
+<?php if ($_SESSION['account_is_activated']){
+  header('Location: my-account.php');
+}
+?>
 <?php include_once 'inc/head.php';?>
 <div class="index">
   <?php include_once 'inc/navbar.php';?>

@@ -17,7 +17,11 @@
 </div>
 <?php include_once 'php/database.php'; ?>
 <?php include_once 'php/validate.php'; ?>
-
+<?php
+  if (!$_SESSION['account_is_activated']){
+    header('Location: account-not-active.php');
+  }
+?>
 <script>
   isIndex = false;
   scrollTop = 0;
@@ -28,26 +32,43 @@
     <h1>Welcome, <?php echo $_SESSION['account_email'];?>!</h1>
   </div>
   <div class="container">
+    <?php include_once 'php/testimonial-query.php';?>
+  </div>
+  <?php if (!isset($testimonial)){ ?>
+    <div class="container">
+      <h6 class="text-center">It appears you have not written a testimonial yet. <a href="write-testimonial.php" class="btn btn-primary text-center">Write Testimonial</a></h6>
+    </div>
+  <?php
+}else {?>
+  <div class="container">
     <div class="row">
-      <div class="testimonial col-12" id="testimonial-1">
+      <div class="testimonial col-12" id="my-testimonial">
         <div class="row">
           <div class="col-12 col-sm-4">
-            <img src="img/woman1profile.jpg" alt="">
+            <img src="<?php echo $testimonial->pic;?>" alt="">
           </div>
           <div class="col-12 col-sm-8">
             <h4 class="text-secondary font-weight-bold">
-              "This is the best company I have ever hired!"
+              <?php echo $testimonial->title;?>
             </h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ducimus facilis sit fugiat accusamus voluptate iusto nostrum porro dolore aspernatur dolor assumenda, culpa ad tempora, omnis eum praesentium! Debitis quisquam enim ipsum, dignissimos facilis odit tenetur facere perferendis sit et recusandae, error quae similique eligendi autem illum ducimus tempora quod!
+              <?php echo $testimonial->text;?>
             </p>
             <h5>
-              <span class="customer-name"><b>-Amanda Thompson</b>, </span><span class="customer-city">Madison Heights</span>
+              <span class="customer-name">
+                <b>-<?php echo $testimonial->first_name;?> <?php echo $testimonial->last_name;?></b>,
+              </span>
+              <span class="customer-city">
+                <?php echo $testimonial->city;?>
+              </span>
             </h5>
           </div>
         </div>
       </div>
     </div>
   </div>
+<?php
+}?>
+
 </main>
 <?php include_once 'inc/foot.php'; ?>
