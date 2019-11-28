@@ -24,8 +24,26 @@
       if(isset($_POST['register'])){
         $email = $_POST['loginEmail'];
         $password = $_POST['password'];
-        $db->createAccount($email, $password);
-        header('Location: account-created.php');
+        $confirm = $_POST['confirm'];
+
+        if(validateEmail($email)){
+          if(!$db->hasAccount($email)){
+            if(confirmPasswordsMatch($password, $confirm)){
+              if(validatePassword($password)){
+                $db->createAccount($email, $password);
+                header('Location: account-created.php');
+              }else {
+                warn('Passwords must be 8-16 characters using at least one uppercase letter, one lowercase letter, one number and one non-alphanumeric character.');
+              }
+            }else {
+              warn('Please make sure your passwords match.');
+            }
+          }else {
+            warn('There is already an account registered under that email address.  Do you need to <a class="btn btn-primary" href="login.php">Log In</a>?');
+          }
+        }else {
+          warn('Please use a valid email.');
+        }
       }
     ?>
   </div>
