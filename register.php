@@ -22,9 +22,9 @@
       $db->connect();
 
       if(isset($_POST['register'])){
-        $email = $_POST['loginEmail'];
-        $password = $_POST['password'];
-        $confirm = $_POST['confirm'];
+        $email = htmlspecialchars($_POST['loginEmail']);
+        $password = htmlspecialchars($_POST['password']);
+        $confirm = htmlspecialchars($_POST['confirm']);
 
         if(validateEmail($email)){
           if(!$db->hasAccount($email)){
