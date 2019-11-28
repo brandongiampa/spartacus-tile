@@ -27,20 +27,22 @@
 
       if (isset($_POST['submit-testimonial'])){
         $id = $account->id;
-        $fName = $_POST['first-name'];
-        $lName = $_POST['last-name'];
-        $city = $_POST['city'];
-        $picTempPath = $_FILES['pic']['tmp_name'];
+        $fName = htmlspecialchars($_POST['first-name']);
+        $lName = htmlspecialchars($_POST['last-name']);
+        $city = htmlspecialchars($_POST['city']);
+        $picTempPath = htmlspecialchars($_FILES['pic']['tmp_name']);
         $picPath = createPermanentImagePath($_FILES['pic']);
-        $title = $_POST['title'];
-        $text = $_POST['text'];
+        $title = htmlspecialchars($_POST['title']);
+        $text = htmlspecialchars($_POST['text']);
 
-        $db->writeTestimonial($id, $fName, $lName, $city, $picPath, $title, $text);
+        if($fName!==""&&$lName!==""&&$city!==""&&$title!==""&&$text!==""){
+          $db->writeTestimonial($id, $fName, $lName, $city, $picPath, $title, $text);
 
-        if ($picPath !== ""){
-          move_uploaded_file($picTempPath, $picPath);
+          if ($picPath !== ""){
+            move_uploaded_file($picTempPath, $picPath);
+          }
+          header('Location: my-account.php');
         }
-        header('Location: my-account.php');
       }
     ?>
   </div>
