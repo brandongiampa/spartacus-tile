@@ -26,7 +26,6 @@
       $msg = $db->errorMsg;
 
       if (isset($_POST['submit-testimonial'])){
-        echo 'POSTED';
         $id = $account->id;
         $fName = $_POST['first-name'];
         $lName = $_POST['last-name'];
