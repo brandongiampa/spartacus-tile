@@ -40,6 +40,8 @@
           }
 
           echo '<div class="alert alert-success text-center">Your testimonial has been updated. <a href="my-account.php" class="link link-primary">My Account</a></div>';
+        }else {
+          warn('Please make sure all fields are filled out.');
         }
 
       }

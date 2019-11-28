@@ -42,6 +42,8 @@
             move_uploaded_file($picTempPath, $picPath);
           }
           header('Location: my-account.php');
+        }else {
+          warn('Please make sure all fields are filled out.');
         }
       }
     ?>
