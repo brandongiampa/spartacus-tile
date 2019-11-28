@@ -31,6 +31,9 @@
             if(confirmPasswordsMatch($password, $confirm)){
               if(validatePassword($password)){
                 $db->createAccount($email, $password);
+
+                //send email here
+
                 header('Location: account-created.php');
               }else {
                 warn('Passwords must be 8-16 characters using at least one uppercase letter, one lowercase letter, one number and one non-alphanumeric character.');
@@ -56,7 +59,7 @@
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
           <div class="form-group">
             <label for="loginEmail">Email address</label>
-            <input type="email" class="form-control" id="loginEmail" name="loginEmail" aria-describedby="emailHelp" value="">
+            <input type="email" class="form-control" id="loginEmail" name="loginEmail" aria-describedby="emailHelp" value="<?php if(isset($email)){echo $email;}?>">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="form-group">
