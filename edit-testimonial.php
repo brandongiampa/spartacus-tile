@@ -1,17 +1,7 @@
-<?php include_once 'php/database.php'; ?>
-<?php
-
-  $query = "SELECT COUNT(*) FROM `testimonials` WHERE `account_id` = ?";
-  $stmt = $con->prepare($query);
-  $stmt->execute([10]);
-
-?>
-
 <?php include_once 'inc/head.php';?>
 <div class="index">
   <?php include_once 'inc/navbar.php';?>
 </div>
-<?php include_once 'php/validate.php'; ?>
 
 
 <script>
@@ -25,48 +15,73 @@
     <h1>Edit Your Testimonial</h1>
   </div>
   <div class="container">
-    <?php include_once 'php/submit-testimonial-query.php'; ?>
-  </div>
+    <?php include_once 'php/database.php'; ?>
+    <?php include_once 'php/functions.php'; ?>
+
+    <?php
+      $db = new Database();
+      $db->connect();
+
+      if(isset($_POST['submit-changes'])){
+        $id = $_POST['id'];
+        $fName = $_POST['first-name'];
+        $lName = $_POST['last-name'];
+        $city = $_POST['city'];
+        $picTempPath = $_FILES['pic']['tmp_name'];
+        $picPath = createPermanentImagePath($_FILES['pic']);
+        $title = $_POST['title'];
+        $text = $_POST['text'];
+        $db->editTestimonial($id, $fName, $lName, $city, $picPath, $title, $text);
+
+        if ($picPath !== ""){
+          move_uploaded_file($picTempPath, $picPath);
+        }
+
+        echo '<div class="alert alert-success text-center">Your testimonial has been updated. <a href="my-account.php" class="link link-primary">My Account</a></div>';
+      }
+
+      $testimonial = $db->getTestimonial('brandongiampa555@gmail.com');
+    ?>  </div>
   <div class="container">
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" enctype="multipart/form-data">
       <div class="form-row">
         <div class="form-group col-12 col-lg-4">
-          <label for="register-first-name">First Name*</label>
-          <input type="text" class="form-control" id="register-first-name" name="register-first-name" value="<?php echo $testimonial->first_name;?>">
+          <label for="first-name">First Name*</label>
+          <input type="text" class="form-control" id="first-name" name="first-name" value="<?php echo $testimonial->first_name;?>">
         </div>
         <div class="form-group col-12 col-lg-4">
-          <label for="register-last-name">Last Name*</label>
-          <input type="text" class="form-control" id="register-last-name" name="register-last-name" value="<?php echo $testimonial->last_name;?>">
+          <label for="last-name">Last Name*</label>
+          <input type="text" class="form-control" id="last-name" name="last-name" value="<?php echo $testimonial->last_name;?>">
         </div>
         <div class="form-group col-12 col-lg-4">
-          <label for="register-city">City*</label>
-          <select type="text" class="custom-select" id="register-city" name="register-city" value="<?php echo $testimonial->city;?>">
-            <option selected><span class="text-muted">Please select...</span></option>
-            <option value="Madison Heights">Madison Heights</option>
-            <option value="Royal Oak">Royal Oak</option>
-            <option value="Warren">Warren</option>
+          <label for="city">City*</label>
+          <select type="text" class="custom-select" id="city" name="city">
+            <option value="Madison Heights" <?php if ($testimonial->city === "Madison Heights"){echo 'selected';}?>>Madison Heights</option>
+            <option value="Royal Oak" <?php if ($testimonial->city === "Royal Oak"){echo 'selected';}?>>Royal Oak</option>
+            <option value="Warren" <?php if ($testimonial->city === "Warren"){echo 'selected';}?>>Warren</option>
           </select>
         </div>
       </div>
       <div class="form-row">
         <div class="col-12 col-lg-8">
-          <label for="testimonial-title">Title*</label>
-          <input type="text" name="testimonial-title" id="testimonial-title" class="form-control" value="<?php echo $testimonial->title;?>">
+          <label for="title">Title*</label>
+          <input type="text" name="title" id="title" class="form-control" value="<?php echo $testimonial->title;?>">
         </div>
         <div class="col-12 col-md-4">
-          <label for="testimonial-pic">Upload Picture <span class="text-muted">(Optional)</span></label>
-          <input class="form-control-file" type="file" name="testimonial-pic" id="testimonial-pic" value="<?php echo $testimonial->pic;?>">
+          <label for="pic">Upload New Picture <span class="text-muted">(Optional)</span></label>
+          <input class="form-control-file" type="file" name="pic" id="pic" value="<?php echo $testimonial->pic;?>">
         </div>
       </div>
       <div class="form-row">
         <div class="col-12">
-          <label for="testimonial-text">Text*</label>
-          <textarea class="form-control-file" rows="12" name="testimonial-text" id="testimonial-text">
+          <label for="text">Text*</label>
+          <textarea class="form-control-file" rows="12" name="text" id="text">
             <?php echo $testimonial->text;?>
           </textarea>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary mt-1" name="submit-changes">Submit Changes</button>
+      <input type="hidden" name="id" value="<?php echo $testimonial->id;?>">
+      <input type="submit" class="btn btn-primary mt-1" name="submit-changes" value="Submit Changes">
     </form>
   </div>
 </main>
