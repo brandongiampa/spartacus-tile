@@ -2,7 +2,7 @@
 <div class="index">
   <?php include_once 'inc/navbar.php';?>
 </div>
-<?php include_once 'php/database.php'; ?>
+
 
 <script>
   isIndex = false;
@@ -14,8 +14,31 @@
     <h1>Login Page</h1>
   </div>
   <div class="container">
-    <?php include_once 'php/validate.php'; ?>
-    <?php include_once 'php/login-query.php'; ?>
+    <?php include_once 'php/database.php'; ?>
+    <?php include_once 'php/functions.php'; ?>
+    <?php
+      $db = new Database();
+      $db->connect();
+
+      if(isset($_POST['login'])){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $account = $db->getAccountInfo($email);
+
+        if (password_verify($password, $account->salt)){
+          if($db->isAccountActivated($email)===1){
+            header('Location: my-account.php');
+          }
+          else {
+            header('Location: account-not-active.php');
+          }
+        }else {
+          echo '<div class="alert alert-warning text-center">The password you entered did not match our records.</div>';
+        }
+
+      }
+    ?>
     <div class="m-auto">
       <h6>Do you need an account?  <a href="register.php" class="link link-primary">Register</a>.</h6>
     </div>
@@ -23,15 +46,15 @@
       <div class="col-12 col-md-6 m-auto">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
           <div class="form-group">
-            <label for="login_email">Email address</label>
-            <input type="email" class="form-control" id="login_email" name="login_email" value="<?php echo $login_email;?>" aria-describedby="emailHelp">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" value="" aria-describedby="emailHelp">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="form-group">
-            <label for="login_password">Password</label>
-            <input type="password" value="<?php echo $login_password;?>" class="form-control" id="login_password" name="login_password">
+            <label for="password">Password</label>
+            <input type="password" value="" class="form-control" id="password" name="password">
           </div>
-          <button type="submit" class="btn btn-primary" value="login">Log In</button>
+          <input type="submit" class="btn btn-primary" value="Log In" name="login">
         </form>
       </div>
     </div>

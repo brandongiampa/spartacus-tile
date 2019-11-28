@@ -1,27 +1,19 @@
+<?php include_once 'php/database.php'; ?>
+<?php include_once 'php/functions.php'; ?>
+
 <?php
-  session_start();
-  if(isset($_SESSION['account_id'])){
+  $db = new Database();
+  $db->connect();
 
-    if ($_SESSION['account_is_activated'] === 0){
-      header('Location: account-not-active.php');
-    }
-  } else {
-    header('Location: login.php');
+  if($db->getTestimonialCount('brandongiampa555@gmail.com')>0){
+    $testimonial = $db->getTestimonial('brandongiampa555@gmail.com');
   }
-
 ?>
 
 <?php include_once 'inc/head.php';?>
 <div class="index">
   <?php include_once 'inc/navbar.php';?>
 </div>
-<?php include_once 'php/database.php'; ?>
-<?php include_once 'php/validate.php'; ?>
-<?php
-  if (!$_SESSION['account_is_activated']){
-    header('Location: account-not-active.php');
-  }
-?>
 <script>
   isIndex = false;
   scrollTop = 0;
@@ -29,10 +21,10 @@
 
 <main class="non-index bg-white" id="login-page">
   <div class="header-sm">
-    <h1>Welcome, <?php echo $_SESSION['account_email'];?>!</h1>
+    <h1>Welcome, staticbrandongiampa555@gmail.com!</h1>
   </div>
   <div class="container">
-    <?php include_once 'php/testimonial-query.php';?>
+
   </div>
   <?php if (!isset($testimonial)){ ?>
     <div class="container">
@@ -40,13 +32,6 @@
     </div>
   <?php
 }else {
-  $_SESSION['account_id'] = $testimonial->id;
-  $_SESSION['account_first_name'] = $testimonial->first_name;
-  $_SESSION['account_last_name'] = $testimonial->last_name;
-  $_SESSION['account_city'] = $testimonial->city;
-  $_SESSION['account_pic'] = $testimonial->pic;
-  $_SESSION['account_title'] = $testimonial->title;
-  $_SESSION['account_text'] = $testimonial->text;
   ?>
   <div class="container">
     <div class="row">
