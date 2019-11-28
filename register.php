@@ -1,7 +1,4 @@
 <?php include_once 'php/send-message.php'; ?>
-<?php include_once 'php/database.php'; ?>
-<?php include_once 'php/validate.php'; ?>
-<?php include_once 'php/registration-query.php'; ?>
 <?php include_once 'inc/head.php';?>
 <div class="index">
   <?php include_once 'inc/navbar.php';?>
@@ -15,14 +12,22 @@
 <main class="non-index bg-white" id="login-page">
   <div class="header-sm">
     <h1>Registration Page</h1>
+  </div>
+  <div class="container">
+    <?php include_once 'php/database.php'; ?>
+    <?php include_once 'php/functions.php'; ?>
     <?php
-      if($found_account):?>
-        <div class="container">
-          <div class="alert alert-warning">
-            There is already an account using that email address.  <a href="login.php">Log In</a> | <a href="login.php">Forgot Password</a>
-          </div>
-        </div>
-      <?php endif;?>
+
+      $db = new Database();
+      $db->connect();
+
+      if(isset($_POST['register'])){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $db->createAccount($email, $password);
+        header('Location: account-created.php');
+      }
+    ?>
   </div>
   <div class="container">
     <div class="m-auto">
@@ -32,43 +37,19 @@
       <div class="col-12 col-md-6 m-auto">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
           <div class="form-group">
-            <label for="register_email">Email address</label>
-            <?php
-              if(!$email_is_valid):?>
-                <div class="container">
-                  <div class="alert alert-warning">
-                    <?php echo $email_invalid_message;?>
-                  </div>
-                </div>
-              <?php endif;?>
-            <input type="email" class="form-control" id="register_email" name="register_email" aria-describedby="emailHelp" value="<?php echo $register_email;?>">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="form-group">
-            <label for="register_password">Password</label>
-            <?php
-              if(!$password_accepted):?>
-                <div class="container">
-                  <div class="alert alert-warning">
-                    <?php echo $password_rejected_message;?>
-                  </div>
-                </div>
-              <?php endif;?>
-            <input type="password" class="form-control" id="register_password" name="register_password" value="<?php echo $register_password;?>">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" value="">
           </div>
           <div class="form-group">
-            <label for="register_confirm">Confirm Password</label>
-            <?php
-              if(!$passwords_match):?>
-                <div class="container">
-                  <div class="alert alert-warning">
-                    <?php echo $passwords_match_message;?>
-                  </div>
-                </div>
-              <?php endif;?>
-            <input type="password" class="form-control" id="register_confirm" name="register_confirm" value="<?php echo $register_confirm;?>">
+            <label for="confirm">Confirm Password</label>
+            <input type="password" class="form-control" id="confirm" name="confirm" value="">
           </div>
-          <button type="submit" class="btn btn-primary" name="register">Register</button>
+          <input type="submit" class="btn btn-primary" name="register" value="Register">
         </form>
       </div>
     </div>
