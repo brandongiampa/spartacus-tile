@@ -24,20 +24,24 @@
 
       if(isset($_POST['submit-changes'])){
         $id = $_POST['id'];
-        $fName = $_POST['first-name'];
-        $lName = $_POST['last-name'];
-        $city = $_POST['city'];
-        $picTempPath = $_FILES['pic']['tmp_name'];
+        $fName = htmlspecialchars($_POST['first-name']);
+        $lName = htmlspecialchars($_POST['last-name']);
+        $city = htmlspecialchars($_POST['city']);
+        $picTempPath = htmlspecialchars($_FILES['pic']['tmp_name']);
         $picPath = createPermanentImagePath($_FILES['pic']);
-        $title = $_POST['title'];
-        $text = $_POST['text'];
-        $db->editTestimonial($id, $fName, $lName, $city, $picPath, $title, $text);
+        $title = htmlspecialchars($_POST['title']);
+        $text = htmlspecialchars($_POST['text']);
 
-        if ($picPath !== ""){
-          move_uploaded_file($picTempPath, $picPath);
+        if($fName!==""&&$lName!==""&&$city!==""&&$title!==""&&$text!==""){
+          $db->editTestimonial($id, $fName, $lName, $city, $picPath, $title, $text);
+
+          if ($picPath !== ""){
+            move_uploaded_file($picTempPath, $picPath);
+          }
+
+          echo '<div class="alert alert-success text-center">Your testimonial has been updated. <a href="my-account.php" class="link link-primary">My Account</a></div>';
         }
 
-        echo '<div class="alert alert-success text-center">Your testimonial has been updated. <a href="my-account.php" class="link link-primary">My Account</a></div>';
       }
 
       $testimonial = $db->getTestimonial('brandongiampa555@gmail.com');
