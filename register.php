@@ -22,7 +22,7 @@
       $db->connect();
 
       if(isset($_POST['register'])){
-        $email = $_POST['email'];
+        $email = $_POST['loginEmail'];
         $password = $_POST['password'];
         $db->createAccount($email, $password);
         header('Location: account-created.php');
@@ -37,8 +37,8 @@
       <div class="col-12 col-md-6 m-auto">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
           <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="">
+            <label for="loginEmail">Email address</label>
+            <input type="email" class="form-control" id="loginEmail" name="loginEmail" aria-describedby="emailHelp" value="">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="form-group">

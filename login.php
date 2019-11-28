@@ -21,13 +21,13 @@
       $db->connect();
 
       if(isset($_POST['login'])){
-        $email = $_POST['email'];
+        $email = $_POST['loginEmail'];
         $password = $_POST['password'];
 
         $account = $db->getAccountInfo($email);
 
         if (password_verify($password, $account->salt)){
-          if($db->isAccountActivated($email)===1){
+          if($db->isAccountActivated($email)){
             header('Location: my-account.php');
           }
           else {
@@ -36,7 +36,6 @@
         }else {
           echo '<div class="alert alert-warning text-center">The password you entered did not match our records.</div>';
         }
-
       }
     ?>
     <div class="m-auto">
@@ -46,13 +45,13 @@
       <div class="col-12 col-md-6 m-auto">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
           <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" value="" aria-describedby="emailHelp">
+            <label for="loginEmail">Email address</label>
+            <input type="email" value="<?php if (isset($email)){echo $email;}?>" class="form-control" id="loginEmail" name="loginEmail" aria-describedby="emailHelp">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" value="" class="form-control" id="password" name="password">
+            <input type="password" class="form-control" id="password" name="password">
           </div>
           <input type="submit" class="btn btn-primary" value="Log In" name="login">
         </form>
