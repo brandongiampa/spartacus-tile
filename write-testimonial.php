@@ -53,26 +53,26 @@
       <div class="form-row">
         <div class="form-group col-12 col-lg-4">
           <label for="first-name">First Name*</label>
-          <input type="text" class="form-control" id="first-name" name="first-name">
+          <input type="text" class="form-control" id="first-name" name="first-name" value="<?php if (isset($fName)){echo $fName;}?>">
         </div>
         <div class="form-group col-12 col-lg-4">
           <label for="last-name">Last Name*</label>
-          <input type="text" class="form-control" id="last-name" name="last-name">
+          <input type="text" class="form-control" id="last-name" name="last-name" value="<?php if (isset($lName)){echo $lName;}?>">
         </div>
         <div class="form-group col-12 col-lg-4">
           <label for="city">City*</label>
-          <select type="text" class="custom-select" id="city" name="city">
-            <option selected><span class="text-muted">Please select...</span></option>
-            <option value="Madison Heights">Madison Heights</option>
-            <option value="Royal Oak">Royal Oak</option>
-            <option value="Warren">Warren</option>
+          <select type="text" class="custom-select" id="city" name="city" value="<?php if (isset($city)){echo $city;}?>">
+            <option <?php if (!isset($city)){echo 'selected';}?> value=""><span class="text-muted">Please select...</span></option>
+            <option <?php if (isset($city)){if($city==="Madison Heights"){echo 'selected';}}?> value="Madison Heights">Madison Heights</option>
+            <option <?php if (isset($city)){if($city==="Royal Oak"){echo 'selected';}}?> value="Royal Oak">Royal Oak</option>
+            <option <?php if (isset($city)){if($city==="Warren"){echo 'selected';}}?> value="Warren">Warren</option>
           </select>
         </div>
       </div>
       <div class="form-row">
         <div class="col-12 col-lg-8">
           <label for="title">Title*</label>
-          <input type="text" name="title" id="title" class="form-control">
+          <input type="text" name="title" id="title" class="form-control" value="<?php if (isset($title)){echo $title;}?>">
         </div>
         <div class="col-12 col-md-4">
           <label for="pic">Upload Picture <span class="text-muted">(Optional)</span></label>
@@ -82,7 +82,9 @@
       <div class="form-row">
         <div class="col-12">
           <label for="text">Text*</label>
-          <textarea class="form-control-file" rows="12" name="text" id="text"></textarea>
+          <textarea class="form-control-file" rows="12" name="text" id="text">
+            <?php if (isset($text)){echo $text;}?>
+          </textarea>
         </div>
       </div>
       <input type="submit" class="btn btn-primary mt-1" name="submit-testimonial" value="Submit">
