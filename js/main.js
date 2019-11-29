@@ -17,6 +17,7 @@ function onLoad() {
   determineCardContainerPadding();
   determineBackToTopVisibility();
   moveHeroImageTop();
+  setUpLoginValidation();
 }
 function setUpInputValidation(){
   $('#name').on('keyup', validateInputs);
@@ -174,4 +175,48 @@ function scrollToCorrectWindowTop(){
     $(window).scrollTop(scrollTop);
   }
   scrollTop = 0;
+}
+function setUpLoginValidation(){
+  $('#loginEmail').on('keyup', validateEmailAndPasswordToEnableSubmit);
+  $('#password').on('keyup', validateEmailAndPasswordToEnableSubmit);
+}
+function validateEmail(){
+  var regEx = /^[A-Za-z0-9._]+@[A-Za-z0-9]+\.[A-Za-z]+$/;
+  var loginEmail = $('#loginEmail').val();
+  console.log(regEx.test(loginEmail));
+  return regEx.test(loginEmail);
+}
+function validatePassword(){
+  var password = $('#password').val();
+
+  var regEx = /[A-Z]+/;
+  if(!regEx.test(password)){
+    return false;
+  }
+  regEx = /[a-z]+/;
+  if(!regEx.test(password)){
+    return false;
+  }
+  regEx = /[0-9]+/;
+  if(!regEx.test(password)){
+    return false;
+  }
+  regEx = /\W+/;
+  if(!regEx.test(password)){
+    return false;
+  }
+  if(password.length<8){
+    return false;
+  }
+  if(password.length>15){
+    return false;
+  }
+  return true;
+}
+function validateEmailAndPasswordToEnableSubmit(){
+  if(validateEmail()&&validatePassword()){
+    $('#login').prop('disabled', false);
+  }else {
+    $('#login').prop('disabled', true);
+  }
 }
