@@ -24,17 +24,20 @@
         $email = $_POST['loginEmail'];
         $password = $_POST['password'];
 
-        $account = $db->getAccountInfo($email);
-
-        if (password_verify($password, $account->salt)){
-          if($db->isAccountActivated($email)){
-            header('Location: my-account.php');
-          }
-          else {
-            header('Location: account-not-active.php');
+        if($db->hasAccount($email)){
+          $account = $db->getAccountInfo($email);
+          if (password_verify($password, $account->salt)){
+            if($db->isAccountActivated($email)){
+              header('Location: my-account.php');
+            }
+            else {
+              header('Location: account-not-active.php');
+            }
+          }else {
+            echo '<div class="alert alert-warning text-center">The password you entered did not match our records.  Please input the correct password.</div>';
           }
         }else {
-          echo '<div class="alert alert-warning text-center">The password you entered did not match our records.</div>';
+          echo '<div class="alert alert-warning text-center">There is no account associated with that email address.  Do you need to <a class="link link-primary" href="register.php">register</a>?</div>';
         }
       }
     ?>
