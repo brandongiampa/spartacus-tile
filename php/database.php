@@ -12,7 +12,6 @@ class Database{
   function __construct(){
 
   }
-
   public function connect(){
     $host = $this->host;
     $username = $this->username;
@@ -31,9 +30,10 @@ class Database{
     $array = array($account_id, $first_name, $last_name, $city, $picPath, $title, $text);
     $stmt->execute($array);
   }
-  public function createAccount($email, $passwordHash){
+  public function createAccount($email, $password){
     $query = "INSERT INTO `account` (`email`, `salt`) VALUES (?,?)";
     $stmt = $this->con->prepare($query);
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
     $array = array($email, $passwordHash);
     $stmt->execute($array);
   }
@@ -70,6 +70,37 @@ class Database{
     }
     return true;
   }
-}
+  public function editTestimonial($id, $first_name, $last_name, $city, $picPath, $title, $text){
+    try {
+      if ($picPath!==""){
+        $query = 'UPDATE `testimonials` SET `first_name` = ?, `last_name` = ?, `city` = ?, `pic` = ?, `title` = ?, `text` = ? WHERE `id` = ?';
+        $stmt = $this->con->prepare($query);
+        $array = array($first_name, $last_name, $city, $picPath, $title, $text, $id);
+        $stmt->execute($array);
+      }else {
+        $query = 'UPDATE `testimonials` SET `first_name` = ?, `last_name` = ?, `city` = ?, `title` = ?, `text` = ? WHERE `id` = ?';
+        $stmt = $this->con->prepare($query);
+        $array = array($first_name, $last_name, $city, $title, $text, $id);
+        $stmt->execute($array);
+      }
+    }catch(PDOException $exception){
+      echo '<div class="alert alert-warning">There was an error updating records: ' . $exception->getMessage() .'</div>';
+    }
+  }
+  public function hasAccount($email){
+    try{
+      $query = 'SELECT COUNT(*) FROM `account` WHERE email = ?';
+      $stmt = $this->con->prepare($query);
+      $stmt->execute(array($email));
+      $count = $stmt->fetchColumn();
 
+      if ($count>0){
+        return true;
+      }
+    }catch(PDOException $exception){
+      echo '<div class="alert alert-warning">There was a problem: ' . $exception . '</div>';
+    }
+    return false;
+  }
+}
 ?>
