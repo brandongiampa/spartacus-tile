@@ -22,9 +22,9 @@
       $db->connect();
 
       if(isset($_POST['register'])){
-        $email = htmlspecialchars($_POST['loginEmail']);
-        $password = htmlspecialchars($_POST['password']);
-        $confirm = htmlspecialchars($_POST['confirm']);
+        $email = htmlspecialchars($_POST['registerEmail']);
+        $password = htmlspecialchars($_POST['registerPassword']);
+        $confirm = htmlspecialchars($_POST['registerConfirm']);
 
         if(validateEmail($email)){
           if(!$db->hasAccount($email)){
@@ -58,19 +58,19 @@
       <div class="col-12 col-md-6 m-auto">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
           <div class="form-group">
-            <label for="loginEmail">Email address</label>
-            <input type="email" class="form-control" id="loginEmail" name="loginEmail" aria-describedby="emailHelp" value="<?php if(isset($email)){echo $email;}?>">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="registerEmail" name="registerEmail" aria-describedby="emailHelp" value="<?php if(isset($email)){echo $email;}?>">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" value="">
+            <input type="password" class="form-control" id="registerPassword" name="registerPassword" value="">
           </div>
           <div class="form-group">
             <label for="confirm">Confirm Password</label>
-            <input type="password" class="form-control" id="confirm" name="confirm" value="">
+            <input type="password" class="form-control" id="registerConfirm" name="registerConfirm" value="">
           </div>
-          <input type="submit" class="btn btn-primary" name="register" value="Register">
+          <input type="submit" class="btn btn-primary" id="register" name="register" value="Register" disabled>
         </form>
       </div>
     </div>

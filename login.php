@@ -3,7 +3,6 @@
   <?php include_once 'inc/navbar.php';?>
 </div>
 
-
 <script>
   isIndex = false;
   scrollTop = 0;
@@ -54,9 +53,9 @@
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password">
+            <input type="password" class="form-control" id="loginPassword" name="password">
           </div>
-          <input type="submit" class="btn btn-primary" value="Log In" id="login" name="login" disabled>
+          <input type="submit" class="btn btn-primary" value="Log In" id="login" name="login">
         </form>
       </div>
     </div>

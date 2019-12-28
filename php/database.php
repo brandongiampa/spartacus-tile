@@ -1,4 +1,7 @@
 <?php
+
+include_once 'classes/Testimonial.php';
+
 class Database{
 
   private $host = 'localhost';
@@ -101,6 +104,40 @@ class Database{
       echo '<div class="alert alert-warning">There was a problem: ' . $exception . '</div>';
     }
     return false;
+  }
+
+  public function getTestimonials($limit, $offset){
+    $outputArray = array();
+
+    $query = 'SELECT * FROM `testimonials` LIMIT :limit OFFSET :offset';
+    $stmt = $this->con->prepare($query);
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+      $id = $row['id'];
+      $accountID = $row['account_id'];
+      $firstName = $row['first_name'];
+      $lastName = $row['last_name'];
+      $city = $row['city'];
+      $pic = $row['pic'];
+      $title = $row['title'];
+      $text = $row['text'];
+
+      $testimonial = new Testimonial($id, $accountID, $firstName, $lastName, $city, $pic, $title, $text);
+
+      $outputArray[] = $testimonial;
+    }
+
+    return $outputArray;
+  }
+  public function getTestimonialsCount(){
+    $query = 'SELECT COUNT(*) FROM `testimonials`';
+    $stmt = $this->con->prepare($query);
+    $stmt->execute();
+
+    return $stmt->fetchColumn();
   }
 }
 ?>

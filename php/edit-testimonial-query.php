@@ -45,7 +45,7 @@
   }else {
     $query = 'SELECT * FROM `testimonials` WHERE `account_id` = ?';
     $stmt = $con->prepare($query);
-    $stmt->execute([10]);
+    $stmt->execute([12]);
     $testimonial = $stmt->fetch(PDO::FETCH_OBJ);
   }
   function validateImage($img){

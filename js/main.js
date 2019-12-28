@@ -17,7 +17,10 @@ function onLoad() {
   determineCardContainerPadding();
   determineBackToTopVisibility();
   moveHeroImageTop();
-  setUpLoginValidation();
+
+  if ($('#register').length>0){
+    setUpEmailAndPasswordValidation();
+  }
 }
 function setUpInputValidation(){
   $('#name').on('keyup', validateInputs);
@@ -176,18 +179,19 @@ function scrollToCorrectWindowTop(){
   }
   scrollTop = 0;
 }
-function setUpLoginValidation(){
-  $('#loginEmail').on('keyup', validateEmailAndPasswordToEnableSubmit);
-  $('#password').on('keyup', validateEmailAndPasswordToEnableSubmit);
+function setUpEmailAndPasswordValidation(){
+  $('#registerEmail').on('keyup', validateEmailAndPasswordToEnableSubmit);
+  $('#registerPassword').on('keyup', validateEmailAndPasswordToEnableSubmit);
+  $('#registerConfirm').on('keyup', validateEmailAndPasswordToEnableSubmit);
 }
 function validateEmail(){
   var regEx = /^[A-Za-z0-9._]+@[A-Za-z0-9]+\.[A-Za-z]+$/;
-  var loginEmail = $('#loginEmail').val();
-  console.log(regEx.test(loginEmail));
-  return regEx.test(loginEmail);
+  var email = $('#registerEmail').val();
+  console.log(regEx.test(email));
+  return regEx.test(email);
 }
 function validatePassword(){
-  var password = $('#password').val();
+  var password = $('#registerPassword').val();
 
   var regEx = /[A-Z]+/;
   if(!regEx.test(password)){
@@ -214,9 +218,16 @@ function validatePassword(){
   return true;
 }
 function validateEmailAndPasswordToEnableSubmit(){
-  if(validateEmail()&&validatePassword()){
-    $('#login').prop('disabled', false);
+  if(validateEmail()&&validatePassword()&&arePasswordsSame()){
+    $('#register').prop('disabled', false);
   }else {
-    $('#login').prop('disabled', true);
+    $('#register').prop('disabled', true);
   }
+  console.log(validatePassword());
+}
+function arePasswordsSame(){
+    if ($('#registerPassword').val()===$('#registerConfirm').val()){
+      return true;
+    }
+    return false;
 }

@@ -25,6 +25,11 @@ function validateImageSize($img){
   return true;
 }
 function createPermanentImagePath($img){
+
+  if($img['error']===4){
+    return "";
+  }
+
   $fileExtension = explode('.', $img['name']);
   $fileExtension = strtolower(end($fileExtension));
   $destination = 'uploads/'.uniqid('', true).'.'.$fileExtension;
@@ -43,6 +48,7 @@ function validatePassword($password) {
   }
   //length
   if (strlen($password)<8 || strlen($password)>16){
+
     return false;
   }
   if (!preg_match('/[0-9]+/', $password)){
@@ -65,19 +71,7 @@ function confirmPasswordsMatch($password, $confirm){
   }
   return false;
 }
-function hasAccount($email, $con){
-  try{
-    $query = 'SELECT COUNT(*) FROM `account` WHERE email = ?';
-    $stmt = $con->prepare($query);
-    $stmt->execute([$_POST['register_email']]);
-    $count = $stmt->fetchColumn();
-
-    if ($count>0){
-      return true;
-    }
-  }catch(PDOException $exception){
-    echo 'There was a problem: ' . $exception;
-  }
-  return false;
+function warn($string){
+  echo '<div class="alert alert-warning">'.$string.'</div>';
 }
 ?>
