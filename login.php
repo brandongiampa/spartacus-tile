@@ -1,3 +1,12 @@
+<?php session_start();?>
+<?php include 'php/database.php';?>
+<?php
+  //if already logged in when opening page, directs to my account
+  if (isset($_SESSION['loginEmail'])){
+    header('Location: my-account.php');
+    exit;
+  }
+?>
 <?php include_once 'inc/head.php';?>
 <div class="index">
   <?php include_once 'inc/navbar.php';?>
@@ -21,12 +30,13 @@
 
       if(isset($_POST['login'])){
         $email = $_POST['loginEmail'];
-        $password = $_POST['password'];
+        $password = $_POST['loginPassword'];
 
         if($db->hasAccount($email)){
           $account = $db->getAccountInfo($email);
           if (password_verify($password, $account->salt)){
             if($db->isAccountActivated($email)){
+              $_SESSION['loginEmail'] = $email;
               header('Location: my-account.php');
             }
             else {
@@ -53,7 +63,7 @@
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="loginPassword" name="password">
+            <input type="password" class="form-control" id="loginPassword" name="loginPassword">
           </div>
           <input type="submit" class="btn btn-primary" value="Log In" id="login" name="login">
         </form>

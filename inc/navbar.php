@@ -31,6 +31,12 @@
         </li>
       </ul>
     </div>
+    <?php
+      if(isset($_SESSION['loginEmail'])):?>
+        <form action="logout.php">
+          <input type="submit" id="logout" name="logout" value="Log Out">
+        </form>
+    <?php endif;?>
     <div class="phone-number ml-auto">
       <a href="#" class="btn btn-primary">248-954-0594</a>
     </div>

@@ -1,12 +1,21 @@
+<?php session_start();?>
 <?php include_once 'php/database.php'; ?>
 <?php include_once 'php/functions.php'; ?>
 
 <?php
-  $db = new Database();
-  $db->connect();
+  if(isset($_SESSION['loginEmail'])){
+    $db = new Database();
+    $db->connect();
 
-  if($db->getTestimonialCount('brandongiampa555@gmail.com')>0){
-    $testimonial = $db->getTestimonial('brandongiampa555@gmail.com');
+    $email = $_SESSION['loginEmail'];
+
+    if($db->getTestimonialCount($email)>0){
+      $testimonial = $db->getTestimonial($email);
+    }
+  }
+  else {
+    header('Location: login.php');
+    exit;
   }
 ?>
 
