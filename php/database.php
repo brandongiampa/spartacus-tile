@@ -49,12 +49,20 @@ class Database{
     return $testimonial;
   }
   public function getAccountInfo($email){
-    $query = "SELECT * FROM `account` WHERE `email` = ?";
+    $query = "SELECT * FROM `account` WHERE `email` = ? LIMIT 1";
     $stmt = $this->con->prepare($query);
     $array = array($email);
     $stmt->execute($array);
     $account = $stmt->fetch(PDO::FETCH_OBJ);
     return $account;
+  }
+  public function verifyPassword($email, $password){
+    $query = "SELECT `salt` FROM `account` WHERE `email` = ?";
+    $stmt = $this->con->prepare($query);
+    $array = array($email);
+    $stmt->execute($array);
+    $hash = $stmt->fetch(PDO::FETCH_OBJ)->salt;
+    return password_verify($password, $hash);
   }
   public function getTestimonialCount($email){
     $query = 'SELECT COUNT(*) FROM `testimonials` WHERE `account_id` = (SELECT `id` FROM `account` WHERE `email` = ?)';
