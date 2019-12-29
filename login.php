@@ -40,6 +40,7 @@
               header('Location: my-account.php');
             }
             else {
+              $_SESSION['loginEmail'] = $email;
               header('Location: account-not-active.php');
             }
           }else {

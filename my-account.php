@@ -12,6 +12,11 @@
     if($db->getTestimonialCount($email)>0){
       $testimonial = $db->getTestimonial($email);
     }
+
+    if($db->isAccountActivated($email)===false){
+      header('Location: account-not-active.php');
+      exit;
+    }
   }
   else {
     header('Location: login.php');

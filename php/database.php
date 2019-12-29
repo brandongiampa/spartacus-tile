@@ -72,14 +72,17 @@ class Database{
     return $stmt->fetchColumn();
   }
   public function isAccountActivated($email){
-    $query = 'SELECT `isActivated` FROM `testimonials` WHERE `email` = ?';
+    $query = 'SELECT `isActivated` FROM `account` WHERE `email` = ? LIMIT 1';
     $stmt = $this->con->prepare($query);
     $array = array($email);
     $stmt->execute($array);
-    if ($stmt->isActivated===0){
-      return false;
+
+    while ($row=$stmt->fetch(PDO::FETCH_OBJ)){
+      if ($row->isActivated){
+        return true;
+      }
     }
-    return true;
+    return false;
   }
   public function editTestimonial($id, $first_name, $last_name, $city, $picPath, $title, $text){
     try {

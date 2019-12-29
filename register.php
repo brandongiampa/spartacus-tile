@@ -1,9 +1,21 @@
 <?php session_start();?>
+<?php include_once('php/database.php'); ?>
+
 <?php
 
   if (isset($_SESSION['loginEmail'])){
-    header('Location: my-account.php');
-    exit;
+    $email = $_SESSION['loginEmail'];
+    $db = new Database();
+    $db->connect();
+
+    if($db->isAccountActivated($email)){
+      header('Location: my-account.php');
+      exit;
+    }
+    else {
+      header('Location: account-not-active.php');
+      exit;
+    }
   }
 
 ?>
