@@ -1,8 +1,19 @@
+<?php session_start();?>
+<?php include_once 'php/database.php';?>
+<?php include_once 'php/functions.php'; ?>
+
+<?php
+
+  if(!isset($_SESSION['loginEmail'])){
+    header('Location: login.php');
+    exit;
+  }
+?>
+
 <?php include_once 'inc/head.php';?>
 <div class="index">
   <?php include_once 'inc/navbar.php';?>
 </div>
-
 
 <script>
   isIndex = false;
@@ -15,9 +26,6 @@
     <h1>Edit Your Testimonial</h1>
   </div>
   <div class="container">
-    <?php include_once 'php/database.php'; ?>
-    <?php include_once 'php/functions.php'; ?>
-
     <?php
       $db = new Database();
       $db->connect();
@@ -43,50 +51,61 @@
         }else {
           warn('Please make sure all fields are filled out.');
         }
-
       }
+      $email = $_SESSION['loginEmail'];
 
-      $testimonial = $db->getTestimonial('brandongiampa555@gmail.com');
+      $db = new Database();
+      $db->connect();
+
+      $testimonial = $db->getTestimonial($email);
+
+      $id = $testimonial->id;
+      $firstName = $testimonial->first_name;
+      $lastName = $testimonial->last_name;
+      $city = $testimonial->city;
+      $pic = $testimonial->pic;
+      $title = $testimonial->title;
+      $text = $testimonial->text;
     ?>  </div>
   <div class="container">
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" enctype="multipart/form-data">
       <div class="form-row">
         <div class="form-group col-12 col-lg-4">
           <label for="first-name">First Name*</label>
-          <input type="text" class="form-control" id="first-name" name="first-name" value="<?php echo $testimonial->first_name;?>">
+          <input type="text" class="form-control" id="first-name" name="first-name" value="<?php echo $firstName;?>">
         </div>
         <div class="form-group col-12 col-lg-4">
           <label for="last-name">Last Name*</label>
-          <input type="text" class="form-control" id="last-name" name="last-name" value="<?php echo $testimonial->last_name;?>">
+          <input type="text" class="form-control" id="last-name" name="last-name" value="<?php echo $lastName;?>">
         </div>
         <div class="form-group col-12 col-lg-4">
           <label for="city">City*</label>
           <select type="text" class="custom-select" id="city" name="city">
-            <option value="Madison Heights" <?php if ($testimonial->city === "Madison Heights"){echo 'selected';}?>>Madison Heights</option>
-            <option value="Royal Oak" <?php if ($testimonial->city === "Royal Oak"){echo 'selected';}?>>Royal Oak</option>
-            <option value="Warren" <?php if ($testimonial->city === "Warren"){echo 'selected';}?>>Warren</option>
+            <option value="Madison Heights" <?php if ($city === "Madison Heights"){echo 'selected';}?>>Madison Heights</option>
+            <option value="Royal Oak" <?php if ($city === "Royal Oak"){echo 'selected';}?>>Royal Oak</option>
+            <option value="Warren" <?php if ($city === "Warren"){echo 'selected';}?>>Warren</option>
           </select>
         </div>
       </div>
       <div class="form-row">
         <div class="col-12 col-lg-8">
           <label for="title">Title*</label>
-          <input type="text" name="title" id="title" class="form-control" value="<?php echo $testimonial->title;?>">
+          <input type="text" name="title" id="title" class="form-control" value="<?php echo $title;?>">
         </div>
         <div class="col-12 col-md-4">
           <label for="pic">Upload New Picture <span class="text-muted">(Optional)</span></label>
-          <input class="form-control-file" type="file" name="pic" id="pic" value="<?php echo $testimonial->pic;?>">
+          <input class="form-control-file" type="file" name="pic" id="pic" value="<?php echo $pic;?>">
         </div>
       </div>
       <div class="form-row">
         <div class="col-12">
           <label for="text">Text*</label>
           <textarea class="form-control-file" rows="12" name="text" id="text">
-            <?php echo $testimonial->text;?>
+            <?php echo $text;?>
           </textarea>
         </div>
       </div>
-      <input type="hidden" name="id" value="<?php echo $testimonial->id;?>">
+      <input type="hidden" name="id" value="<?php echo $id;?>">
       <input type="submit" class="btn btn-primary mt-1" name="submit-changes" value="Submit Changes">
     </form>
   </div>

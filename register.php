@@ -1,3 +1,4 @@
+<?php session_start();?>
 <?php include_once 'php/send-message.php'; ?>
 <?php include_once 'inc/head.php';?>
 <div class="index">
@@ -31,20 +32,22 @@
             if(confirmPasswordsMatch($password, $confirm)){
               if(validatePassword($password)){
                 $db->createAccount($email, $password);
-
-                //send email here
-
-                header('Location: account-created.php');
-              }else {
+                $_SESSION['loginEmail'] = $email;
+                header('Location: my-account.php');
+              }
+              else {
                 warn('Passwords must be 8-16 characters using at least one uppercase letter, one lowercase letter, one number and one non-alphanumeric character.');
               }
-            }else {
+            }
+            else {
               warn('Please make sure your passwords match.');
             }
-          }else {
+          }
+          else {
             warn('There is already an account registered under that email address.  Do you need to <a class="btn btn-primary" href="login.php">Log In</a>?');
           }
-        }else {
+        }
+        else {
           warn('Please use a valid email.');
         }
       }

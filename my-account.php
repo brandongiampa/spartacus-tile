@@ -30,7 +30,7 @@
 
 <main class="non-index bg-white" id="login-page">
   <div class="header-sm">
-    <h1>Welcome, staticbrandongiampa555@gmail.com!</h1>
+    <h1>Welcome, <?php echo $email;?></h1>
   </div>
   <div class="container">
 

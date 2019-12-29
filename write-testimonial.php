@@ -1,3 +1,12 @@
+<?php session_start(); ?>
+<?php
+  if (!isset($_SESSION['loginEmail'])){
+    header('Location: login.php');
+  }
+  else {
+    $email = $_SESSION['loginEmail'];
+  }
+?>
 <?php include_once 'inc/head.php';?>
 <div class="index">
   <?php include_once 'inc/navbar.php';?>
@@ -21,7 +30,7 @@
       $db = new Database();
 
       $db->connect();
-      $account = $db->getAccountInfo('brandongiampa555@gmail.com');
+      $account = $db->getAccountInfo($email);
       $echo = $account->id;
       $msg = $db->errorMsg;
 
