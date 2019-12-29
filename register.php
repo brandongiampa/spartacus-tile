@@ -1,4 +1,12 @@
 <?php session_start();?>
+<?php
+
+  if (isset($_SESSION['loginEmail'])){
+    header('Location: my-account.php');
+    exit;
+  }
+
+?>
 <?php include_once 'php/send-message.php'; ?>
 <?php include_once 'inc/head.php';?>
 <div class="index">
