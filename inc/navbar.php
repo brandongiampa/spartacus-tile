@@ -34,7 +34,7 @@
     <?php
       if(isset($_SESSION['loginEmail'])):?>
         <form action="logout.php">
-          <input type="submit" id="logout" name="logout" value="Log Out">
+          <input class="btn btn-link" type="submit" id="logout" name="logout" value="LOG OUT">
         </form>
     <?php endif;?>
     <div class="phone-number ml-auto">

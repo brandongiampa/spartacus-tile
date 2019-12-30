@@ -5,9 +5,9 @@ include_once 'classes/Testimonial.php';
 class Database{
 
   private $host = 'localhost';
-  private $username = 'root';
-  private $password = '';
-  private $db_name = 'spartacus_tile';
+  private $username = 'u534061814_wolf';
+  private $password = 'Ak!raT0zawa';
+  private $db_name = 'u534061814_AMP';
   private $con;
 
   public $errorMsg;
@@ -27,29 +27,47 @@ class Database{
       echo 'Having trouble connecting to database: ' . $exception->getMessage();
     }
   }
+  public function checkVkey($vkey){
+    $query = "SELECT COUNT(*) FROM `st_accounts` WHERE `vkey` = ?";
+    $stmt = $this->con->prepare($query);
+    $array = array($vkey);
+    $stmt->execute($array);
+    $output = $stmt->fetchColumn();
+
+    if($output>0){
+        return true;
+    }
+    return false;
+  }
+  public function activateAccount($vkey){
+    $query = "UPDATE `st_accounts` SET isActivated = 1 WHERE `vkey` = ?";
+    $stmt = $this->con->prepare($query);
+    $array = array($vkey);
+    $stmt->execute($array);
+  }
   public function writeTestimonial($account_id, $first_name, $last_name, $city, $picPath, $title, $text){
-    $query = "INSERT INTO `testimonials` (`account_id`, `first_name`, `last_name`, `city`, `pic`, `title`, `text`) VALUES (?,?,?,?,?,?,?)";
+    $query = "INSERT INTO `st_testimonials` (`account_id`, `first_name`, `last_name`, `city`, `pic`, `title`, `text`) VALUES (?,?,?,?,?,?,?)";
     $stmt = $this->con->prepare($query);
     $array = array($account_id, $first_name, $last_name, $city, $picPath, $title, $text);
     $stmt->execute($array);
   }
-  public function createAccount($email, $password){
-    $query = "INSERT INTO `account` (`email`, `salt`) VALUES (?,?)";
+  public function createaccount($email, $password, $vkey){
+    $query = "INSERT INTO `st_accounts` (`email`, `hash`, `vkey`) VALUES (?,?,?)";
     $stmt = $this->con->prepare($query);
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-    $array = array($email, $passwordHash);
+    $array = array($email, $passwordHash, $vkey);
     $stmt->execute($array);
   }
   public function getTestimonial($email){
-    $query = "SELECT * FROM `testimonials` WHERE `account_id` = (SELECT `id` FROM `account` WHERE `email` = ?) LIMIT 1";
+    $query = "SELECT * FROM `st_testimonials` WHERE `account_id` = (SELECT `id` FROM `st_accounts` WHERE `email` = ?) LIMIT 1";
     $stmt = $this->con->prepare($query);
     $array = array($email);
     $stmt->execute($array);
     $testimonial = $stmt->fetch(PDO::FETCH_OBJ);
     return $testimonial;
   }
-  public function getAccountInfo($email){
-    $query = "SELECT * FROM `account` WHERE `email` = ? LIMIT 1";
+  public function getaccountInfo($email){
+    $query = "SELECT * FROM `st_accounts` WHERE `email` = ? LIMIT 1";
     $stmt = $this->con->prepare($query);
     $array = array($email);
     $stmt->execute($array);
@@ -57,22 +75,22 @@ class Database{
     return $account;
   }
   public function verifyPassword($email, $password){
-    $query = "SELECT `salt` FROM `account` WHERE `email` = ?";
+    $query = "SELECT `hash` FROM `st_accounts` WHERE `email` = ?";
     $stmt = $this->con->prepare($query);
     $array = array($email);
     $stmt->execute($array);
-    $hash = $stmt->fetch(PDO::FETCH_OBJ)->salt;
+    $hash = $stmt->fetch(PDO::FETCH_OBJ)->hash;
     return password_verify($password, $hash);
   }
   public function getTestimonialCount($email){
-    $query = 'SELECT COUNT(*) FROM `testimonials` WHERE `account_id` = (SELECT `id` FROM `account` WHERE `email` = ?)';
+    $query = 'SELECT COUNT(*) FROM `st_testimonials` WHERE `account_id` = (SELECT `id` FROM `st_accounts` WHERE `email` = ?)';
     $stmt = $this->con->prepare($query);
     $array = array($email);
     $stmt->execute($array);
     return $stmt->fetchColumn();
   }
-  public function isAccountActivated($email){
-    $query = 'SELECT `isActivated` FROM `account` WHERE `email` = ? LIMIT 1';
+  public function isaccountActivated($email){
+    $query = 'SELECT `isActivated` FROM `st_accounts` WHERE `email` = ? LIMIT 1';
     $stmt = $this->con->prepare($query);
     $array = array($email);
     $stmt->execute($array);
@@ -87,12 +105,12 @@ class Database{
   public function editTestimonial($id, $first_name, $last_name, $city, $picPath, $title, $text){
     try {
       if ($picPath!==""){
-        $query = 'UPDATE `testimonials` SET `first_name` = ?, `last_name` = ?, `city` = ?, `pic` = ?, `title` = ?, `text` = ? WHERE `id` = ?';
+        $query = 'UPDATE `st_testimonials` SET `first_name` = ?, `last_name` = ?, `city` = ?, `pic` = ?, `title` = ?, `text` = ? WHERE `id` = ?';
         $stmt = $this->con->prepare($query);
         $array = array($first_name, $last_name, $city, $picPath, $title, $text, $id);
         $stmt->execute($array);
       }else {
-        $query = 'UPDATE `testimonials` SET `first_name` = ?, `last_name` = ?, `city` = ?, `title` = ?, `text` = ? WHERE `id` = ?';
+        $query = 'UPDATE `st_testimonials` SET `first_name` = ?, `last_name` = ?, `city` = ?, `title` = ?, `text` = ? WHERE `id` = ?';
         $stmt = $this->con->prepare($query);
         $array = array($first_name, $last_name, $city, $title, $text, $id);
         $stmt->execute($array);
@@ -101,9 +119,9 @@ class Database{
       echo '<div class="alert alert-warning">There was an error updating records: ' . $exception->getMessage() .'</div>';
     }
   }
-  public function hasAccount($email){
+  public function hasaccount($email){
     try{
-      $query = 'SELECT COUNT(*) FROM `account` WHERE email = ?';
+      $query = 'SELECT COUNT(*) FROM `st_accounts` WHERE email = ?';
       $stmt = $this->con->prepare($query);
       $stmt->execute(array($email));
       $count = $stmt->fetchColumn();
@@ -120,7 +138,7 @@ class Database{
   public function getTestimonials($limit, $offset){
     $outputArray = array();
 
-    $query = 'SELECT * FROM `testimonials` LIMIT :limit OFFSET :offset';
+    $query = 'SELECT * FROM `st_testimonials` LIMIT :limit OFFSET :offset';
     $stmt = $this->con->prepare($query);
     $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
     $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
@@ -144,7 +162,7 @@ class Database{
     return $outputArray;
   }
   public function getTestimonialsCount(){
-    $query = 'SELECT COUNT(*) FROM `testimonials`';
+    $query = 'SELECT COUNT(*) FROM `st_testimonials`';
     $stmt = $this->con->prepare($query);
     $stmt->execute();
 

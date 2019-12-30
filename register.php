@@ -46,14 +46,36 @@
         $email = htmlspecialchars($_POST['registerEmail']);
         $password = htmlspecialchars($_POST['registerPassword']);
         $confirm = htmlspecialchars($_POST['registerConfirm']);
+        $vkey = md5(time().$email);
 
         if(validateEmail($email)){
           if(!$db->hasAccount($email)){
             if(confirmPasswordsMatch($password, $confirm)){
               if(validatePassword($password)){
-                $db->createAccount($email, $password);
+                $db->createAccount($email, $password, $vkey);
                 $_SESSION['loginEmail'] = $email;
-                header('Location: my-account.php');
+
+                //send activation email
+                $name = "Spartacus Tile";
+
+                $toEmail = $email;
+                $subject = "Spartacus Tile Account Activation";
+                $body = '<h2>Thank you for registering with Spartacus Tile!</h2>';
+                $body .= '<a href="https://www.brandongiampa.com/spartacus-tile/activate-account.php?vkey=' .$vkey .'">Click here to Activate your Account</a>';
+
+                $headers = "MIME-Version:1.0"."\r\n";
+                $headers .= "Content-Type:text/html;charset=UTF-8" . "\r\n";
+                $headers .= "From: " . $name . "<" . "spartacustile@gmail.com" . ">" . "\r\n";
+
+                if(mail($toEmail, $subject, $body, $headers)){
+                    $msg = "Inquiry sent successfully.";
+                    $msgClass = "alert-success";
+                    header('Location: account-created.php');
+                    exit;
+                }else {
+                    $msg = "Unfortunately, there was an issue sending your email.  Please try again.";
+                    $msgClass = "alert-danger";
+                }
               }
               else {
                 warn('Passwords must be 8-16 characters using at least one uppercase letter, one lowercase letter, one number and one non-alphanumeric character.');
