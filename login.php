@@ -44,7 +44,7 @@
               header('Location: account-not-active.php');
             }
           }else {
-            echo '<div class="alert alert-warning text-center">The password you entered did not match our records.  Please input the correct password.</div>';
+            echo '<div class="alert alert-warning text-center">The password you entered did not match our records.  Did you <a href="forgot-password.php">Forget Your Password</a>?</div>';
           }
         }else {
           echo '<div class="alert alert-warning text-center">There is no account associated with that email address.  Do you need to <a class="link link-primary" href="register.php">register</a>?</div>';
