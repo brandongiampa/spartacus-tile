@@ -2,9 +2,9 @@
 <?php include_once 'php/database.php';?>
 
 <?php
-  $testimonialsPerPage = 10;
+  $testimonialsPerPage = 4;
   $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
-  $offset = isset($_GET['page']) ? ((intval($_GET['page'])-1)*10) : 0;
+  $offset = isset($_GET['page']) ? ((intval($_GET['page'])-1)*$testimonialsPerPage) : 0;
 
   $DB = new Database();
   $DB->connect();
@@ -76,10 +76,10 @@
     </section>
     <section id="section-3" >
       <?php
-      if($numberOfTestimonials>10){?>
+      if($numberOfTestimonials>$testimonialsPerPage){?>
         <nav aria-label="Page navigation example" class="d-flex justify-content-center">
           <ul class="pagination">
-            <?php if($numberOfPages>1):?>
+            <?php if($numberOfPages>1 && $currentPage!==1):?>
               <li class="page-item"><a class="page-link" href="testimonials.php?page=1">First</a></li>
             <?php endif;?>
 
@@ -87,7 +87,7 @@
               <li class="page-item"><a class="page-link" href="testimonials.php?page=<?php echo $currentPage-2;?>"><?php echo $currentPage-2;?></a></li>
             <?php endif;?>
 
-            <?php if($currentPage-2>0):?>
+            <?php if($currentPage-1>0):?>
               <li class="page-item"><a class="page-link" href="testimonials.php?page=<?php echo $currentPage-1;?>"><?php echo $currentPage-1;?></a></li>
             <?php endif;?>
 
@@ -101,7 +101,7 @@
               <li class="page-item"><a class="page-link" href="testimonials.php?page=<?php echo $currentPage+2;?>"><?php echo $currentPage+2;?></a></li>
             <?php endif;?>
 
-            <?php if($numberOfPages>1):?>
+            <?php if($numberOfPages>1 && $currentPage !== $numberOfPages):?>
               <li class="page-item"><a class="page-link" href="testimonials.php?page=<?php echo $numberOfPages;?>">Last</a></li>
             <?php endif;?>
           </ul>
