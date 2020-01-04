@@ -347,3 +347,63 @@ figure, figure img, figcaption {
 
 #account-created-page p {
   text-align: center; }
+
+@media only screen and (max-width: 768px) {
+  #navbar-main a img {
+    height: 50px; }
+
+  #navbar-main .phone-number .btn {
+    margin-right: 16px; }
+
+  #navbar-main i {
+    font-size: 24px; }
+
+  #landing-page h1 {
+    font-size: 44px; }
+
+  #landing-page h4 {
+    font-size: 26px; }
+
+  section header {
+    padding-top: 8px; }
+
+  section header h2 {
+    font-size: 30px; }
+
+  #accolades div {
+    border-bottom: 1px solid #ddd;
+    padding: 4px 0; }
+
+  #accolades a {
+    margin-bottom: 18px; }
+
+  #contact-section img {
+    max-width: 100%; }
+
+  .testimonial img {
+    margin-bottom: 14px; }
+
+  main .header h1 {
+    font-size: 42px; }
+
+  .testimonial .col-12 {
+    padding: 8px 20px 0 20px; }
+
+  .testimonial h4 {
+    margin-top: 0; }
+
+  section {
+    padding: 12px; }
+
+  #view-mores {
+    padding: 0px; }
+
+  .non-index .header {
+    margin-top: 76px; }
+
+  .non-index .header .header-bg, .non-index .header .header-opaque {
+    margin-top: 76px; }
+
+  #back-to-top {
+    bottom: 25px;
+    right: 25px; } }

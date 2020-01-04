@@ -1,12 +1,9 @@
 <section id="section-1">
   <header>
     <div class="container">
-      <h2 class="">
+      <h2>
         At Spartacus Tile, we strive to provide <i>quality service</i> and to make sure the customer is always our <i>top priority</i>.
-      </h2><!--
-      <p>
-        Here are some of the accolades we have earned through our top-rated customer service.
-      </p>-->
+      </h2>
     </div>
   </header>
   <div class="section-body container" id="accolades">
