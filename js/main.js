@@ -97,7 +97,7 @@ function determineNavBarColor() {
 }
 function setSmoothScroll() {
   $('a[href^="#"]').on('click', function(e) {
-    if (window.innerWidth > 900){
+    //if (window.innerWidth > 900){
       e.preventDefault();
 
       var navbarHeight = navbar.height();
@@ -110,7 +110,7 @@ function setSmoothScroll() {
       $('html, body').animate({
         'scrollTop': $target.offset().top-navbarHeight-padding
       }, 1000, 'swing');
-    }
+    //}
   });
 }
 function calculatePadding() {
