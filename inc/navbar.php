@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="navbar-main">
   <div class="container">
     <a class="navbar-brand" href="index.php">
@@ -42,3 +43,4 @@
     </div>
   </div>
 </nav>
+</div>

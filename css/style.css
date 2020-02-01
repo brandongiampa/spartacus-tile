@@ -7,13 +7,24 @@
 nav a {
   color: black; }
 
-body {
+html, body, .body-wrap {
   overflow-x: hidden;
   background-color: white;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  max-width: 100vw;
+  padding: 0;
+  margin: 0; }
+
+.body-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%; }
 
 h1 {
   font-family: 'Roboto Slab', serif; }
+
+nav, nav * {
+  max-width: 100%; }
 
 #navbar-main, #navbar-main img {
   transition: .05s all; }
@@ -349,6 +360,11 @@ figure, figure img, figcaption {
   text-align: center; }
 
 @media only screen and (max-width: 768px) {
+  .navbar {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 100%; }
+
   #navbar-main a img {
     height: 50px; }
 
