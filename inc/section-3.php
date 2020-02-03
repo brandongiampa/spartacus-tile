@@ -1,3 +1,13 @@
+<?php
+
+  $db = new Database();
+  $db->connect();
+
+  $testimonialsOnIndexPage = 4;
+  $numberOfTestimonials = $db->getTestimonialsCount();
+  $testimonials = $db->getTestimonials($testimonialsOnIndexPage, 0);
+
+?>
 <section id="section-3">
   <header>
     <div class="container">
@@ -5,61 +15,35 @@
     </div>
   </header>
   <div class="section-body">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
-        <div class="testimonial col-12 col-lg-4" id="testimonial-1">
-          <div class="row">
-            <div class="col-12 col-sm-4">
-              <img src="img/woman1profile.jpg" alt="">
-            </div>
-            <div class="col-12 col-sm-8">
-              <h4 class="text-secondary font-weight-bold">
-                "This is the best company I have ever hired!"
-              </h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ducimus facilis sit fugiat accusamus voluptate iusto nostrum porro dolore aspernatur dolor assumenda, culpa ad tempora, omnis eum praesentium! Debitis quisquam enim ipsum, dignissimos facilis odit tenetur facere perferendis sit et recusandae, error quae similique eligendi autem illum ducimus tempora quod!
-              </p>
-              <h5>
-                <span class="customer-name"><b>-Amanda Thompson</b>, </span><span class="customer-city">Madison Heights</span>
-              </h5>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial col-12 col-lg-4" id="testimonial-2">
-          <div class="row">
-            <div class="col-12 col-sm-4">
-              <img src="img/man2profile.jpg" alt="">
-            </div>
-            <div class="col-12 col-sm-8">
-              <h4 class="text-secondary font-weight-bold">
-                "Spartacus Tile made my house into the home I'd always dreamed of."
-              </h4>
-              <p>
-                Nobis ducimus facilis sit fugiat accusamus voluptate iusto nostrum porro dolore aspernatur dolor assumenda, culpa ad tempora, omnis eum praesentium! Debitis quisquam enim ipsum, dignissimos facilis odit tenetur facere perferendis sit et recusandae, error quae similique eligendi autem illum ducimus tempora quod!
-              </p>
-              <h5>
-                <span class="customer-name"><b>-John Mavis</b>,</span><span class="customer-city"> Royal Oak</span>
-              </h5>
+        <?php for($i=0;$i<4;$i++){
+          $firstName = $testimonials[$i]->getFirstName();
+          $lastName = $testimonials[$i]->getLastName();
+          $city = $testimonials[$i]->getCity();
+          $pic = $testimonials[$i]->getPic();
+          $title = $testimonials[$i]->getTitle();
+          $text = $testimonials[$i]->getText();
+          ?>
+          <div class="testimonial col-12 col-lg-6" id="testimonial-<?php echo $i+1;?>">
+            <div class="row">
+              <div class="col-12 col-sm-4">
+                <img src="<?php echo $pic;?>" alt="">
+              </div>
+              <div class="col-12 col-sm-8">
+                <h4 class="text-secondary font-weight-bold">
+                  "<?php echo $title;?>"
+                </h4>
+                <p>
+                  <?php echo $text;?>
+                </p>
+                <h5>
+                  <span class="customer-name"><b>-<?php echo $firstName . ' ' . $lastName;?></b>, </span><span class="customer-city"><?php echo $city;?></span>
+                </h5>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="testimonial col-12 col-lg-4" id="testimonial-3">
-          <div class="row">
-            <div class="col-12 col-sm-4">
-              <img src="img/grandma1profile.jpg" alt="">
-            </div>
-            <div class="col-12 col-sm-8">
-              <h4 class="text-secondary font-weight-bold">
-                "Nobody does tile flooring better than Spartacus."
-              </h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ducimus facilis sit fugiat accusamus voluptate iusto nostrum porro dolore aspernatur dolor assumenda, culpa ad tempora, omnis eum praesentium! Debitis quisquam enim ipsum, dignissimos facilis odit tenetur facere perferendis sit et recusandae, error quae similique eligendi autem illum ducimus tempora quod!
-              </p>
-              <h5>
-<span class="customer-name"><b>-Doris McKinley</b>,</span><span class="customer-city"> Royal Oak</span>              </h5>
-            </div>
-          </div>
-        </div>
+        <?php } ?>
       </div>
     </div>
   </div>
