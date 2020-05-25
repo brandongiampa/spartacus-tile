@@ -23,7 +23,7 @@
     <h1>Write Your Testimonial</h1>
   </div>
   <div class="container">
-    <?php include_once 'php/database.php'; ?>
+    <?php include_once 'php/db.php'; ?>
     <?php include_once 'php/functions.php'; ?>
 
     <?php

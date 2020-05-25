@@ -1,5 +1,5 @@
 <?php include_once 'inc/head.php';?>
-<?php include_once 'php/database.php';?>
+<?php include_once 'php/db.php';?>
 
 <?php
   $testimonialsPerPage = 4;
