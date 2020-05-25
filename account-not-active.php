@@ -3,7 +3,7 @@
 <div class="index">
   <?php include_once 'inc/navbar.php';?>
 </div>
-<?php include_once 'php/database.php'; ?>
+<?php include_once 'php/db.php'; ?>
 <?php include_once 'php/send-message.php'; ?>
 
 <?php

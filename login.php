@@ -1,5 +1,5 @@
 <?php session_start();?>
-<?php include 'php/database.php';?>
+<?php include 'php/db.php';?>
 <?php
   //if already logged in when opening page, directs to my account
   if (isset($_SESSION['loginEmail'])){
@@ -22,13 +22,13 @@
     <h1>Login Page</h1>
   </div>
   <div class="container">
-    <?php include_once 'php/database.php'; ?>
+
     <?php include_once 'php/functions.php'; ?>
     <?php
       $db = new Database();
       $db->connect();
 
-      if(isset($_POST['login'])){
+      if(isset($_Pdbin'])){
         $email = $_POST['loginEmail'];
         $password = $_POST['loginPassword'];
 

@@ -1,5 +1,5 @@
 <?php session_start();?>
-<?php include_once 'php/database.php';?>
+<?php include_once 'php/db.php';?>
 <?php include_once 'php/functions.php'; ?>
 
 <?php
