@@ -1,5 +1,6 @@
 <?php session_start();?>
 <?php include 'php/db.php';?>
+<?php include_once 'php/functions.php'; ?>
 <?php
   //if already logged in when opening page, directs to my account
   if (isset($_SESSION['loginEmail'])){
@@ -22,8 +23,6 @@
     <h1>Login Page</h1>
   </div>
   <div class="container">
-
-    <?php include_once 'php/functions.php'; ?>
     <?php
       $db = new Database();
       $db->connect();

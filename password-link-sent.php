@@ -1,8 +1,9 @@
+<?php include_once 'php/db.php'; ?>
+<?php include_once 'php/functions.php'; ?>
 <?php include_once 'inc/head.php';?>
 <div class="index">
   <?php include_once 'inc/navbar.php';?>
 </div>
-
 
 <script>
   isIndex = false;
@@ -14,8 +15,6 @@
     <h1>Forgot Password</h1>
   </div>
   <div class="container">
-    <?php include_once 'php/db.php'; ?>
-    <?php include_once 'php/functions.php'; ?>
     <?php
 
       if(isset($_POST['sendLink'])){

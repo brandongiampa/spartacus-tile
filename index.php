@@ -1,6 +1,6 @@
 <?php include_once 'inc/head.php';?>
 <?php include_once 'inc/navbar.php';?>
-<?php include_once 'php/database.php';?>
+<?php include_once 'php/db.php';?>
 <?php include_once 'classes/Testimonial.php';?>
 <?php include_once 'inc/hero.php';?>
 <script>

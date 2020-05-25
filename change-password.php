@@ -1,5 +1,6 @@
 <?php session_start();?>
 <?php include_once('php/db.php'); ?>
+<?php include_once 'php/functions.php'; ?>
 
 <?php
 
@@ -35,8 +36,6 @@
     <h1>Registration Page</h1>
   </div>
   <div class="container">
-    <?php include_once 'php/database.php'; ?>
-    <?php include_once 'php/functions.php'; ?>
     <?php
 
       $db = new Database();
