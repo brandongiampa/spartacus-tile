@@ -1,12 +1,16 @@
 <?php
 
-  $db = new Database();
-  $db->connect();
+  try{
+    $db = new Database();
+    $db->connect();
 
-  $testimonialsOnIndexPage = 4;
-  $numberOfTestimonials = $db->getTestimonialsCount();
-  $testimonials = $db->getTestimonials($testimonialsOnIndexPage, 0);
-
+    $testimonialsOnIndexPage = 4;
+    $numberOfTestimonials = $db->getTestimonialsCount();
+    $testimonials = $db->getTestimonials($testimonialsOnIndexPage, 0);
+  }
+  catch(PDOException $ex){
+    echo "There was a database connection error.<br>" . $ex->getMessage();
+  }
 ?>
 <section id="section-3">
   <header>
