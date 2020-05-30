@@ -1,12 +1,12 @@
 <?php include_once 'php/send-message.php'; ?>
 
 <section class="container-fluid bg-primary text-white py-4" id="contact-section">
-  <div class="row">
-    <div class="col-md-3 px-5">
-      <img src="img/spartacus_tile_icon_white.png" alt="" class="p-5">
+  <div class="row" id="footer-logo">
+    <div class="col-12 col-lg-3 px-5 row align-items-center">
+      <img src="img/spartacus_tile_icon_white.png" alt="" class="p-5 m-auto">
     </div>
-    <div class="container-fluid col-12 col-md-4">
-      <div class="container" id="address">
+    <div class="container-fluid col-12 col-lg-4 inline m-auto">
+      <div class="container m-auto" id="address">
         <h3>Spartacus Tile</h3>
         <p><b>Location</b></br>
           Address: 1608 E Lincoln Ave, Madison Heights, MI 48071</br>
@@ -45,7 +45,7 @@
         </nav>
       </div>
     </div>
-    <div class="col-12 col-md-5" id="contact-form">
+    <div class="col-12 col-lg-5 row justify-content-center" id="contact-form">
       <?php include_once 'contact-form.php';?>
     </div>
   </div>
