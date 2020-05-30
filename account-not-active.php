@@ -14,15 +14,12 @@
     $db->connect();
 
     if($db->isAccountActivated($email)){
-      header('Location: my-account.php');
+      header('Location: ' . echo $site_url . 'my-account');
       exit;
     }
   }
   else {
-    //header('Location: login.php');
-    for($i=0;$i<5000;$i++){
-      echo "000000000000000000000000000000000000";
-    }
+    header('Location: ' . $site_url . 'login.php');
     exit;
   }
 

@@ -37,7 +37,7 @@
                 $output.='<h1>Your Account has been Activated!</h1>';
             $output.='</div>';
             $output.='<div class="container">';
-                $output.='<a href="login.php">Log In</a>';
+                $output.='<a href="' . $site_url . 'login">Log In</a>';
             $output.='</div>';
             echo $output;
         }

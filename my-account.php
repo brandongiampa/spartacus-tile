@@ -14,12 +14,12 @@
     }
 
     if($db->isAccountActivated($email)===false){
-      header('Location: account-not-active.php');
+      header('Location: ' . $site_url . 'account-not-active');
       exit;
     }
   }
   else {
-    header('Location: login.php');
+    header('Location: ' . $site_url . 'login');
     exit;
   }
 ?>
@@ -42,7 +42,7 @@
   </div>
   <?php if (!isset($testimonial)){ ?>
     <div class="container">
-      <h6 class="text-center">It appears you have not written a testimonial yet. <a href="write-testimonial.php" class="btn btn-primary text-center">Write Testimonial</a></h6>
+      <h6 class="text-center">It appears you have not written a testimonial yet. <a href="<?php echo $site_url;?>write-testimonial" class="btn btn-primary text-center">Write Testimonial</a></h6>
     </div>
   <?php
 }else {
@@ -71,7 +71,7 @@
             </h5>
           </div>
           <div class="edit">
-            <a href="edit-testimonial.php" class="btn btn-primary">Edit</a>
+            <a href="<?php echo $site_url;?>edit-testimonial" class="btn btn-primary">Edit</a>
           </div>
         </div>
       </div>

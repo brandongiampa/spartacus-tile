@@ -10,11 +10,11 @@
     $db->connect();
 
     if($db->isAccountActivated($email)){
-      header('Location: my-account.php');
+      header('Location: ' . $site_url . 'my-account');
       exit;
     }
     else {
-      header('Location: account-not-active.php');
+      header('Location: ' . $site_url . 'account-not-active');
       exit;
     }
   }
@@ -69,7 +69,7 @@
                 if(mail($toEmail, $subject, $body, $headers)){
                     $msg = "Inquiry sent successfully.";
                     $msgClass = "alert-success";
-                    header('Location: account-created.php');
+                    header('Location: ' . $site_url . 'account-created');
                     exit;
                 }else {
                     $msg = "Unfortunately, there was an issue sending your email.  Please try again.";
@@ -85,7 +85,7 @@
             }
           }
           else {
-            warn('There is already an account registered under that email address.  Do you need to <a class="btn btn-primary" href="login.php">Log In</a>?');
+            warn('There is already an account registered under that email address.  Do you need to <a class="btn btn-primary" href="' . $site_url . 'login">Log In</a>?');
           }
         }
         else {
@@ -96,7 +96,7 @@
   </div>
   <div class="container">
     <div class="m-auto">
-      <h6>Do you already have an account?  <a href="login.php" class="link link-primary">Log In</a>.</h6>
+      <h6>Do you already have an account?  <a href="<?php echo $site_url;?>login" class="link link-primary">Log In</a>.</h6>
     </div>
     <div class="row">
       <div class="col-12 col-md-6 m-auto">

@@ -52,6 +52,6 @@
     </div>
   </div>
   <div class="container section-footer">
-    <a href="testimonials.php" class="btn btn-primary btn-lg">View All Testimonials</a>
+    <a href="<?php echo $site_url;?>testimonials" class="btn btn-primary btn-lg">View All Testimonials</a>
   </div>
 </section>

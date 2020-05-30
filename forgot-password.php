@@ -8,7 +8,7 @@
 
 <?php
   if (isset($_SESSION['loginEmail'])){
-    header('Location: my-account.php');
+    header('Location: ' . $site_url . 'my-account');
     die();
   }
 ?>
@@ -44,14 +44,14 @@
         if(mail($toEmail, $subject, $body, $headers)){
             $msg = "Inquiry sent successfully.";
             $msgClass = "alert-success";
-            header('Location: account-created.php');
+            header('Location: ' . $site_url . 'account-created');
             exit;
         }else {
             $msg = "Unfortunately, there was an issue sending your email.  Please try again.";
             $msgClass = "alert-danger";
         }
 
-        header('Location: password-link-sent.php');
+        header('Location: ' . $site_url . 'link-sent');
         die();
       }
 

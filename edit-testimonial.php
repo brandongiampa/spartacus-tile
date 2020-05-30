@@ -5,7 +5,7 @@
 <?php
 
   if(!isset($_SESSION['loginEmail'])){
-    header('Location: login.php');
+    header('Location: ' . $site_url . 'login');
     exit;
   }
 ?>
@@ -47,7 +47,7 @@
             move_uploaded_file($picTempPath, $picPath);
           }
 
-          echo '<div class="alert alert-success text-center">Your testimonial has been updated. <a href="my-account.php" class="link link-primary">My Account</a></div>';
+          echo '<div class="alert alert-success text-center">Your testimonial has been updated. <a href="' . $site_url . 'my-account" class="link link-primary">My Account</a></div>';
         }else {
           warn('Please make sure all fields are filled out.');
         }

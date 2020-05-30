@@ -31,7 +31,7 @@
   </div>
   <div class="section-body bg-white">
     <section id="section-1">
-      <h3>Do you want to share your experience with Spartan?  <a href="write-testimonial.php" class="btn btn-primary">Write a Testimonial</a></h3>
+      <h3>Do you want to share your experience with Spartan?  <a href="<?php echo $site_url;?>write-testimonial" class="btn btn-primary">Write a Testimonial</a></h3>
     </section>
     <section id="section-2">
       <div class="container">

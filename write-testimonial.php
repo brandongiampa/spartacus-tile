@@ -3,7 +3,7 @@
 <?php include_once 'php/functions.php'; ?>
 <?php
   if (!isset($_SESSION['loginEmail'])){
-    header('Location: login.php');
+    header('Location: ' . $site_url . 'login');
   }
   else {
     $email = $_SESSION['loginEmail'];
@@ -49,7 +49,7 @@
           if ($picPath !== ""){
             move_uploaded_file($picTempPath, $picPath);
           }
-          header('Location: my-account.php');
+          header('Location: ' . $site_url . 'my-account');
         }else {
           warn('Please make sure all fields are filled out.');
         }

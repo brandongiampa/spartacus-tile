@@ -1,3 +1,5 @@
+<?php include_once 'php/globals.php';?>
+<?php $site_url = isset($site_url) ? $site_url : 'https://spartacus-tile.brandongiampa.com/';?>
 <?php include_once 'classes/ViewMore.php';?>
 
 <!DOCTYPE html>

@@ -19,7 +19,7 @@
 
       if(isset($_POST['sendLink'])){
         //send email
-        header('Location: password-link-sent.php');
+        header('Location: ' . $site_url . 'password-link-sent');
       }
 
     ?>
