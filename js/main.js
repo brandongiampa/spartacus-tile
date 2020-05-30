@@ -21,6 +21,9 @@ function onLoad() {
   if ($('#register').length>0){
     setUpEmailAndPasswordValidation();
   }
+  const googleMapsScript = document.createElement("script")
+  googleMapsScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDHlWylCMw9F4tCNyrld-seDWF3NEg4vao&callback=initMap'
+  document.head.appendChild(googleMapsScript)
 }
 function setUpInputValidation(){
   $('#name').on('keyup', validateInputs);
