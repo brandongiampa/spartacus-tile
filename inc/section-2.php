@@ -13,7 +13,7 @@
       $kitchenAndBathroom = new ViewMore(
         'Kitchen and Bathroom Tile',
         'Kitchen and Bathroom Tile',
-        'img/bathroom3md.jpg',
+        $site_url .'img/bathroom3md.jpg',
         'services',
         '1'
       );
@@ -22,7 +22,7 @@
       $customtile = new ViewMore(
         'Custom Tile',
         'Custom Tile',
-        'img/customtile2md.jpg',
+        $site_url . 'img/customtile2md.jpg',
         'services',
         '1'
       );
@@ -31,7 +31,7 @@
       $floortile = new ViewMore(
         'Floor Tile',
         'Floor Tile',
-        'img/floortile1md.jpg',
+        $site_url . 'img/floortile1md.jpg',
         'services',
         '1'
       );

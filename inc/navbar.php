@@ -2,7 +2,7 @@
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="navbar-main">
   <div class="container">
     <a class="navbar-brand" href="<?php echo $site_url;?>">
-      <img src="img/spartacus_tile_logo_white.png" alt="SPARTACUS TILE">
+      <img src="<?php echo $site_url;?>img/spartacus_tile_logo_white.png" alt="SPARTACUS TILE">
     </a>
     <button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>

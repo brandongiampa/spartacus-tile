@@ -45,11 +45,11 @@
                 $firstName = $testimonials[$i]->getFirstName();
                 $lastName = $testimonials[$i]->getLastName();
                 $city = $testimonials[$i]->getCity();
-                $pic = $testimonials[$i]->getPic();
+                $pic = $site_url . $testimonials[$i]->getPic();
                 $title = $testimonials[$i]->getTitle();
                 $text = $testimonials[$i]->getText();
                 ?>
-                <div class="testimonial col-12 col-lg-6" id="testimonial-1">
+                <div class="testimonial col-12 col-lg-6" id="testimonial-<?php echo $i+1;?>">
                   <div class="row">
                     <div class="col-12 col-sm-4">
                       <img src="<?php echo $pic;?>" alt="">
@@ -76,33 +76,44 @@
     </section>
     <section id="section-3" >
       <?php
+      $numberOfPaginationLinks = 0;
+
       if($numberOfTestimonials>$testimonialsPerPage){?>
         <nav aria-label="Page navigation example" class="d-flex justify-content-center">
           <ul class="pagination">
             <?php if($numberOfPages>1 && $currentPage!==1):?>
-              <li class="page-item"><a class="page-link" href="testimonials.php?page=1">First</a></li>
+              <li class="page-item"><a class="page-link" href="<?php echo $site_url;?>testimonials/page/1">First</a></li>
             <?php endif;?>
 
-            <?php if($currentPage-2>0):?>
-              <li class="page-item"><a class="page-link" href="testimonials.php?page=<?php echo $currentPage-2;?>"><?php echo $currentPage-2;?></a></li>
+            <?php if($currentPage-2>0):$numberOfPaginationLinks++;?>
+              <li class="page-item"><a class="page-link" href="<?php echo $site_url;?>testimonials/page/<?php echo $currentPage-2;?>"><?php echo $currentPage-2;?></a></li>
             <?php endif;?>
 
-            <?php if($currentPage-1>0):?>
-              <li class="page-item"><a class="page-link" href="testimonials.php?page=<?php echo $currentPage-1;?>"><?php echo $currentPage-1;?></a></li>
+            <?php if($currentPage-1>0):$numberOfPaginationLinks++;?>
+              <li class="page-item"><a class="page-link" href="<?php echo $site_url;?>testimonials/page/<?php echo $currentPage-1;?>"><?php echo $currentPage-1;?></a></li>
             <?php endif;?>
 
-            <li class="page-item active"><a class="page-link" href="testimonials.php?page=<?php echo $currentPage;?>"><?php echo $currentPage;?></a></li>
+            <li class="page-item active"><a class="page-link" href="<?php echo $site_url;?>testimonials/page/<?php echo $currentPage;?>"><?php echo $currentPage;?></a></li>
+            <?php $numberOfPaginationLinks++;?>
 
-            <?php if($currentPage<$numberOfPages):?>
-              <li class="page-item"><a class="page-link" href="testimonials.php?page=<?php echo $currentPage+1;?>"><?php echo $currentPage+1;?></a></li>
+            <?php if($currentPage<$numberOfPages):$numberOfPaginationLinks++;?>
+              <li class="page-item"><a class="page-link" href="<?php echo $site_url;?>testimonials/page/<?php echo $currentPage+1;?>"><?php echo $currentPage+1;?></a></li>
             <?php endif;?>
 
-            <?php if($currentPage<$numberOfPages-1):?>
-              <li class="page-item"><a class="page-link" href="testimonials.php?page=<?php echo $currentPage+2;?>"><?php echo $currentPage+2;?></a></li>
+            <?php if($currentPage<$numberOfPages-1):$numberOfPaginationLinks++;?>
+              <li class="page-item"><a class="page-link" href="<?php echo $site_url;?>testimonials/page/<?php echo $currentPage+2;?>"><?php echo $currentPage+2;?></a></li>
             <?php endif;?>
 
-            <?php if($numberOfPages>1 && $currentPage !== $numberOfPages):?>
-              <li class="page-item"><a class="page-link" href="testimonials.php?page=<?php echo $numberOfPages;?>">Last</a></li>
+            <?php if($currentPage<$numberOfPages-2 && $numberOfPaginationLinks<5):$numberOfPaginationLinks++;?>
+              <li class="page-item"><a class="page-link" href="<?php echo $site_url;?>testimonials/page/<?php echo $currentPage+3;?>"><?php echo $currentPage+3;?></a></li>
+            <?php endif;?>
+
+            <?php if($currentPage<$numberOfPages-3 && $numberOfPaginationLinks<5):$numberOfPaginationLinks++;?>
+              <li class="page-item"><a class="page-link" href="<?php echo $site_url;?>testimonials/page/<?php echo $currentPage+4;?>"><?php echo $currentPage+4;?></a></li>
+            <?php endif;?>
+
+            <?php if($numberOfPages>1 && $currentPage !== $numberOfPages && $numberOfPaginationLinks):?>
+              <li class="page-item"><a class="page-link" href="<?php echo $site_url;?>testimonials/page/<?php echo $numberOfPages;?>">Last</a></li>
             <?php endif;?>
           </ul>
         </nav>

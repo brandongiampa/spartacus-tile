@@ -3,7 +3,7 @@
 <section class="container-fluid bg-primary text-white py-4" id="contact-section">
   <div class="row" id="footer-logo">
     <div class="col-12 col-lg-3 px-5 row align-items-center">
-      <img src="img/spartacus_tile_icon_white.png" alt="" class="p-5 m-auto">
+      <img src="<?php echo $site_url;?>img/spartacus_tile_icon_white.png" alt="" class="p-5 m-auto">
     </div>
     <div class="container-fluid col-12 col-lg-4 inline m-auto">
       <div class="container m-auto" id="address">
