@@ -436,3 +436,36 @@ figure, figure img, figcaption {
 
   #section-2 header .container {
     padding: 32px; } }
+@media only screen and (max-height:480px){
+  #landing-page-text{
+    margin-top:40px;
+  }
+  #landing-page h1, .header h1{
+    font-size:36px;
+  }
+  section header h2{
+    font-size:28px;
+  }
+  #landing-page h4{
+    font-size:24px;
+    margin-bottom:0;
+  }
+  #landing-page #cta-btn{
+    margin-top:12px;
+  }
+  .view-more{
+    background-position:center;
+    max-height:240px;
+  }
+  .testimonial-img{
+    max-width:200px;
+    margin:auto;
+    align-self:center;
+  }
+  #contact-section img{
+    max-width:200px;
+  }
+  .header{
+    max-height:240px;
+  }
+}
