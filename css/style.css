@@ -43,13 +43,20 @@ nav, nav * {
   font-size: 36px; }
 
 .dropdown-menu a {
-  color: black !important;
   border-bottom: 1px #ddd solid; }
 
 .dropdown-menu a:last-child {
   border-bottom: none; }
 .dropdown-menu.show {
   min-width:200px;
+}
+.navbar-collapse{
+  background-color:black;
+}
+.navbar-collapse.collapse.show .dropdown-menu.show, .navbar-collapse.collapse.show .dropdown-menu.show a.dropdown-item{
+  background-color:black;
+  color:white !important;
+  border-color:black;
 }
 #logout {
   margin-right: 25px;
