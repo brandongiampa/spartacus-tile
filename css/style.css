@@ -22,7 +22,9 @@ html, body, .body-wrap {
 
 h1 {
   font-family: 'Roboto Slab', serif; }
-
+p {
+  font-size: 18px;
+}
 nav, nav * {
   max-width: 100%; }
 
@@ -282,7 +284,8 @@ main section {
   margin-top: 32px; }
 
 main h2 {
-  text-align: center; }
+  text-align: center;
+clear:both;}
 
 main #section-2 {
   background-color: inherit; }

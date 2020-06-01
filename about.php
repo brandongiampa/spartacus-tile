@@ -24,8 +24,12 @@
       </section>
       <section id="section-2">
         <h2>The First Location</h2>
+        <figure style="width:480px;" class="float-left mr-3">
+          <img src="img/parkinglot.jpg" alt="" style="max-width:100%;">
+          <figcaption>Our Beautiful First Office Building</figcaption>
+        </figure>
         <p>
-          There's always a certain emotional attachment for business owners as regards their first office. That is the case with Spartacus Tile as well, even if that first place was the basement of an office building. 
+          There's always a certain emotional attachment for business owners as regards their first office. That is the case with Spartacus Tile as well, even if that first place was the basement of an office building.
         </p>
         <p>
           You have to start somewhere.
@@ -36,11 +40,10 @@
         <p>
           Most companies don't need such office space, but we find it necessary for some clients to have hands-on experience with the different types of flooring we offer.
         </p>
+        <p>
+          We give tours occasionally.
+        </p>
       </section>
-      <figure style="width:480px;" class="float-left mr-3">
-        <img src="img/parkinglot.jpg" alt="" style="max-width:100%;">
-        <figcaption>Our Beautiful First Office Building</figcaption>
-      </figure>
       <section id="section-3">
         <h2>The Importance of Artisan Training</h2>
         <p>
