@@ -13,8 +13,8 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
   <link rel="stylesheet" href="<?php echo $site_url;?>css/bootstrap.css">
-  <link rel="stylesheet" href="<?php echo $site_url;?>css/style.css">
-  <link rel="stylesheet" href="<?php echo $site_url;?>css/view-more.css">
+  <link rel="stylesheet" href="<?php echo $site_url;?>css/style.min.css">
+  <link rel="stylesheet" href="<?php echo $site_url;?>css/view-more.min.css">
   <title>Spartacus Tile</title>
   <link rel="icon" href="<?php echo $site_url;?>img/spartacus_tile_icon_orange.png">
   <script>
