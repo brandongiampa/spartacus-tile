@@ -19,38 +19,50 @@
       <section id="section-1">
         <h1>Our Legacy</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, praesentium quod reiciendis doloribus architecto aspernatur error non impedit cupiditate provident quidem quisquam maxime a, animi reprehenderit voluptates exercitationem, asperiores commodi. Nam eaque, necessitatibus saepe doloribus, facilis minus error, earum, consectetur voluptate quos sit porro id!
+          This has been a Shears family business since its inception. Our project is to earn a living while still retaining a sense of satisfaction in what we do. Therefore, every time we have been offered a buyout from a larger competitor, we have refused. We love what we do, and we have watched many of them go under. Spartacus Tile is still here.
         </p>
       </section>
       <section id="section-2">
         <h2>The First Location</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet hic esse porro, similique magni. Consequuntur quaerat, laborum pariatur eos, deleniti modi nemo deserunt necessitatibus nesciunt quasi, voluptatibus omnis.
+          There's always a certain emotional attachment for business owners as regards their first office. That is the case with Spartacus Tile as well, even if that first place was the basement of an office building. 
         </p>
         <p>
-          Ipsum dolor sit amet, consectetur adipisicing elit. Id, laudantium. Doloribus molestiae sed ea ex impedit corporis tenetur, asperiores aspernatur debitis fugiat.
+          You have to start somewhere.
+        </p>
+        <p>
+          We are grateful that our hard work has paid off; our operation has gone from that tiny basement space to occupying the larger half of Windermere Plaza, one of the most frequented corners in the tri-city area.
+        </p>
+        <p>
+          Most companies don't need such office space, but we find it necessary for some clients to have hands-on experience with the different types of flooring we offer.
         </p>
       </section>
       <figure style="width:480px;" class="float-left mr-3">
         <img src="img/parkinglot.jpg" alt="" style="max-width:100%;">
-        <figcaption>Custom Tile Fireplace</figcaption>
+        <figcaption>Our Beautiful First Office Building</figcaption>
       </figure>
       <section id="section-3">
         <h2>The Importance of Artisan Training</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis illum dolores nisi voluptatum eius expedita, laborum, nemo saepe ad rem accusantium aperiam? Possimus porro explicabo sit adipisci, voluptate natus similique ullam nostrum. Dignissimos recusandae neque ex officiis molestiae, voluptatem architecto explicabo officia atque. Iusto ea accusamus quos placeat magnam laudantium, dolorem fuga iure atque explicabo saepe! Quam ab mollitia quas est consequuntur.
+          All of our employees are graduates of the local Academy of Industry and Labor Management. In fact, we recruit directly and refuse to hire anyone who is not trained.
         </p>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores numquam deserunt reiciendis. Cupiditate accusamus ipsam corporis, cum corrupti illum sapiente repudiandae voluptatum reiciendis praesentium debitis. Doloremque, aperiam? Magnam dolorem neque, natus animi dolores, excepturi adipisci voluptates quasi repudiandae.
+          Among our competitors, there are many great tilers whose work we respect who did not do any formal training, but it is crucial to what we do. At Spartacus Tile, we do not have laborers; we have artists, or as most call them in industries like ours, "artisans."
         </p>
       </section>
       <section id="section-4" class="clearfix">
         <h2>Our Plans for the Future</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore quod dolorum necessitatibus minus corporis nisi mollitia ut porro.
+          We want to expand, but a corporate expansion is not our vision. When Sam retires, we are keeping it in the family (though we haven't decided who takes it). This way, we can keep true to our small business roots.
         </p>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis cum in nulla magnam, alias quo autem iusto deleniti velit veritatis nemo! Recusandae molestias, enim fugiat modi aliquam eveniet quod, dolores totam eligendi!
+          However, if we can be a non-corporate entity and do work allover the country/world, we would have no complaints. We simply don't want any investors interfering with our artistic endeavors.
+        </p>
+        <p>
+          Nevertheless, don't think that our attitude will prevent us from doing the job you want; we are here for the customer!
+        </p>
+        <p>
+          -Sam Shears, Owner
         </p>
       </section>
     </div>
