@@ -31,7 +31,7 @@
           ?>
           <div class="testimonial col-12 col-lg-6" id="testimonial-<?php echo $i+1;?>">
             <div class="row">
-              <div class="col-12 col-sm-4">
+              <div class="col-12 col-sm-4 testimonial-img">
                 <img src="<?php echo $pic;?>" alt="">
               </div>
               <div class="col-12 col-sm-8">

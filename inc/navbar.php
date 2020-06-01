@@ -31,15 +31,15 @@
           <a class="nav-link" href="<?php echo $site_url;?>contact">Contact</a>
         </li>
       </ul>
-    </div>
-    <?php
-      if(isset($_SESSION['loginEmail'])):?>
-        <form action="logout.php">
-          <input class="btn btn-link" type="submit" id="logout" name="logout" value="LOG OUT">
-        </form>
-    <?php endif;?>
-    <div class="phone-number ml-auto">
-      <a href="#" class="btn btn-primary">248-954-0594</a>
+      <?php
+        if(isset($_SESSION['loginEmail'])):?>
+          <form action="logout.php">
+            <input class="btn btn-link" type="submit" id="logout" name="logout" value="LOG OUT">
+          </form>
+      <?php endif;?>
+      <div class="phone-number ml-auto" id="phone-number" style:"text-align:right;">
+        <a href="#" class="btn btn-primary">248-954-0594</a>
+      </div>
     </div>
   </div>
 </nav>

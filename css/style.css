@@ -386,14 +386,12 @@ figure, figure img, figcaption {
     padding-right: 0 !important;
     max-width: 100%; }
 
-  #navbar-main a img {
-    height: 50px; }
-
-  #navbar-main .phone-number .btn {
-    margin-right: 16px; }
-
   #navbar-main i {
     font-size: 24px; }
+
+  #phone-number .btn{
+    margin-right:16px;
+  }
 
   #landing-page h1 {
     font-size: 44px; }
@@ -413,8 +411,6 @@ figure, figure img, figcaption {
 
   #accolades a {
     margin-bottom: 18px; }
-
-
 
   .testimonial img {
     margin-bottom: 14px; }
