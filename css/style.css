@@ -48,7 +48,9 @@ nav, nav * {
 
 .dropdown-menu a:last-child {
   border-bottom: none; }
-
+.dropdown-menu.show {
+  min-width:200px;
+}
 #logout {
   margin-right: 25px;
   text-decoration: underline; }
