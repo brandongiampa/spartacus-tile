@@ -49,9 +49,8 @@ nav, nav * {
   border-bottom: none; }
 .dropdown-menu.show {
   min-width:200px;
-}
-.navbar-collapse{
   background-color:black;
+  color:white;
 }
 .navbar-collapse.collapse.show .dropdown-menu.show, .navbar-collapse.collapse.show .dropdown-menu.show a.dropdown-item{
   background-color:black;
@@ -375,7 +374,12 @@ figure, figure img, figcaption {
 
 #account-created-page p {
   text-align: center; }
-
+@media only screen and (max-width: 992px){
+  .navbar-collapse{
+    background-color:black;
+    color:white;
+  }
+}
 @media only screen and (max-width: 768px) {
   .navbar {
     padding-left: 0 !important;
