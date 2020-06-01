@@ -16,13 +16,13 @@
   </div>
   <div class="section-body bg-white p-4" id="about-text">
     <div class="container bg-white">
-      <section id="section-1">
+      <section id="section-1" class="clearfix">
         <h1>Our Legacy</h1>
         <p>
           This has been a Shears family business since its inception. Our project is to earn a living while still retaining a sense of satisfaction in what we do. Therefore, every time we have been offered a buyout from a larger competitor, we have refused. We love what we do, and we have watched many of them go under. Spartacus Tile is still here.
         </p>
       </section>
-      <section id="section-2">
+      <section id="section-2" class="clearfix">
         <h2>The First Location</h2>
         <figure style="width:480px;" class="float-left mr-3">
           <img src="img/parkinglot.jpg" alt="" style="max-width:100%;">
@@ -44,7 +44,7 @@
           We give tours occasionally.
         </p>
       </section>
-      <section id="section-3">
+      <section id="section-3" class="clearfix">
         <h2>The Importance of Artisan Training</h2>
         <p>
           All of our employees are graduates of the local Academy of Industry and Labor Management. In fact, we recruit directly and refuse to hire anyone who is not trained.
