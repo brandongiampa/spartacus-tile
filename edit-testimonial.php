@@ -100,9 +100,7 @@
       <div class="form-row">
         <div class="col-12">
           <label for="text">Text*</label>
-          <textarea class="form-control-file" rows="12" name="text" id="text">
-            <?php echo $text;?>
-          </textarea>
+          <textarea class="form-control-file"rows="12"name="text"id="text"><?php echo $text;?></textarea>
         </div>
       </div>
       <input type="hidden" name="id" value="<?php echo $id;?>">
