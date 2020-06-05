@@ -30,7 +30,7 @@
           $password = htmlspecialchars($_POST['register_password']);
           $password = password_hash($password, PASSWORD_DEFAULT);
 
-          $query = 'INSERT INTO `account`(email, salt) VALUES(?, ?)';
+          $query = 'INSERT INTO `st_accounts`(email, salt) VALUES(?, ?)';
           $stmt = $con->prepare($query);
           $stmt->execute([$email, $password]);
           echo '<script>alert("Thanks!");</script>';

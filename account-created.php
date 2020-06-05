@@ -12,7 +12,7 @@
     <h1>Your Account is Almost Ready...</h1>
   </div>
   <div class="container">
-    <p>We have sent you an email at <span class="font-weight-bold">staticbrandongiampa555@gmail.com</span>.  Please check and click the included link to activate your account.</p>
+    <p>We have sent you an email. Please check and click the included link to activate your account.</p>
   </div>
 </main>
 <?php include_once 'inc/foot.php'; ?>

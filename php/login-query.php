@@ -10,7 +10,7 @@
     $login_password = $_POST['login_password'];
     if (validateEmail($login_email) && validatePassword($login_password)){
       try{
-        $query = "SELECT * FROM `account` WHERE `email` = ?";
+        $query = "SELECT * FROM `st_accounts` WHERE `email` = ?";
         $stmt = $con->prepare($query);
         $stmt->execute([$login_email]);
         $account = $stmt->fetch(PDO::FETCH_OBJ);

@@ -26,7 +26,7 @@
 
     if(isset($picPath)&&validateImage($_FILES['testimonial-pic'])){
       try{
-        $query = 'UPDATE `testimonials` (`first_name`, `last_name`, `city`, `pic`, `title`, `text`) VALUES (?,?,?,?,?,?) WHERE `id` = ?';
+        $query = 'UPDATE `st_testimonials` (`first_name`, `last_name`, `city`, `pic`, `title`, `text`) VALUES (?,?,?,?,?,?) WHERE `id` = ?';
         $stmt = $con->prepare($query);
         $stmt->execute([
           $_POST['register-first-name'],
@@ -43,7 +43,7 @@
       }
     }
   }else {
-    $query = 'SELECT * FROM `testimonials` WHERE `account_id` = ?';
+    $query = 'SELECT * FROM `st_testimonials` WHERE `account_id` = ?';
     $stmt = $con->prepare($query);
     $stmt->execute([12]);
     $testimonial = $stmt->fetch(PDO::FETCH_OBJ);
