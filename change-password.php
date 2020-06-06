@@ -45,8 +45,12 @@
         if(validateEmail($email)){
           if(confirmPasswordsMatch($password, $confirm)){
             if(validatePassword($password)){
-              $_SESSION['loginEmail'] = $email;
-              $db->changePassword($email, $password);
+              if($db->changePassword($email, $password)){
+                $_SESSION['loginEmail'] = $email;
+              }
+              else {
+                warn("There has been an error. Please return to the index page.");
+              }
             }
             else {
               warn('Passwords must be 8-16 characters using at least one uppercase letter, one lowercase letter, one number and one non-alphanumeric character.');
