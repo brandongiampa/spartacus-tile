@@ -33,7 +33,7 @@
 
 <main class="non-index bg-white" id="login-page">
   <div class="header-sm">
-    <h1>Registration Page</h1>
+    <h1>Change Password</h1>
   </div>
   <div class="container">
     <?php
@@ -41,51 +41,19 @@
       $db = new Database();
       $db->connect();
 
-      if(isset($_POST['register'])){
-        $email = htmlspecialchars($_POST['registerEmail']);
-        $password = htmlspecialchars($_POST['registerPassword']);
-        $confirm = htmlspecialchars($_POST['registerConfirm']);
-        $vkey = md5(time().$email);
-
+      if(isset($_POST['change-password'])){
         if(validateEmail($email)){
-          if(!$db->hasAccount($email)){
-            if(confirmPasswordsMatch($password, $confirm)){
-              if(validatePassword($password)){
-                $db->createAccount($email, $password, $vkey);
-                $_SESSION['loginEmail'] = $email;
-
-                //send activation email
-                $name = "Spartacus Tile";
-
-                $toEmail = $email;
-                $subject = "Spartacus Tile Account Activation";
-                $body = '<h2>Thank you for registering with Spartacus Tile!</h2>';
-                $body .= '<a href="https://spartacus-tile.brandongiampa.com/activate-account.php?vkey=' .$vkey .'">Click here to Activate your Account</a>';
-
-                $headers = "MIME-Version:1.0"."\r\n";
-                $headers .= "Content-Type:text/html;charset=UTF-8" . "\r\n";
-                $headers .= "From: " . $name . "<" . "spartacustile@gmail.com" . ">" . "\r\n";
-
-                if(mail($toEmail, $subject, $body, $headers)){
-                    $msg = "Inquiry sent successfully.";
-                    $msgClass = "alert-success";
-                    header('Location: ' . $site_url . 'account-created');
-                    exit;
-                }else {
-                    $msg = "Unfortunately, there was an issue sending your email.  Please try again.";
-                    $msgClass = "alert-danger";
-                }
-              }
-              else {
-                warn('Passwords must be 8-16 characters using at least one uppercase letter, one lowercase letter, one number and one non-alphanumeric character.');
-              }
+          if(confirmPasswordsMatch($password, $confirm)){
+            if(validatePassword($password)){
+              $_SESSION['loginEmail'] = $email;
+              $db->changePassword($email, $password);
             }
             else {
-              warn('Please make sure your passwords match.');
+              warn('Passwords must be 8-16 characters using at least one uppercase letter, one lowercase letter, one number and one non-alphanumeric character.');
             }
           }
           else {
-            warn('There is already an account registered under that email address.  Do you need to <a class="btn btn-primary" href="' . $site_url . 'login">Log In</a>?');
+            warn('Please make sure your passwords match.');
           }
         }
         else {
@@ -114,7 +82,7 @@
             <label for="confirm">Confirm Password</label>
             <input type="password" class="form-control" id="registerConfirm" name="registerConfirm" value="">
           </div>
-          <input type="submit" class="btn btn-primary" id="register" name="register" value="Register" disabled>
+          <input type="submit" class="btn btn-primary" id="register" name="change-password" value="Change Password" disabled>
         </form>
       </div>
     </div>
