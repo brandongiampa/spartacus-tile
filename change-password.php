@@ -1,5 +1,5 @@
 <?php session_start();?>
-<?php include_once('php/db.php'); ?>
+<?php include_once 'php/db.php'; ?>
 <?php include_once 'php/functions.php'; ?>
 <?php include_once 'inc/head.php';?>
 <div class="index">
@@ -21,8 +21,13 @@
       $db = new Database();
       $db->connect();
 
-      $vkey = $_GET['vkey'];
-      $email = $_GET['email'];
+      if(isset($_GET['email'])&&isset($_GET['vkey'])){
+        $vkey = $_GET['vkey'];
+        $email = $_GET['email'];
+      }
+      else {
+        header("location: ${site_url}401-error");
+      }
 
       if(isset($_POST['change-password'])){
         $password = $_POST['password'];
@@ -59,4 +64,6 @@
     </div>
   </div>
 </main>
+<?php include_once 'inc/contact-form.php'; ?>
+<?php include_once 'inc/map.php'; ?>
 <?php include_once 'inc/foot.php'; ?>
