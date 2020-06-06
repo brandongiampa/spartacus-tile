@@ -28,9 +28,12 @@
       if(isset($_POST['sendLink'])){
 
         $db = new Database();
+        $db->connect();
 
         $name = "Spartacus Tile";
         $email = $_POST['loginEmail'];
+
+        $vkey = $db->getVkey($email);
 
         $toEmail = $email;
         $subject = "Spartacus Tile Password Change";
@@ -73,4 +76,6 @@
     </div>
   </div>
 </main>
+<?php include_once 'inc/contact.php'; ?>
+<?php include_once 'inc/map.php'; ?>
 <?php include_once 'inc/foot.php'; ?>
