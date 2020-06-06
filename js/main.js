@@ -188,6 +188,9 @@ function setUpEmailAndPasswordValidation(){
   $('#registerConfirm').on('keyup', validateEmailAndPasswordToEnableSubmit);
 }
 function validateEmail(){
+  if($('#registerEmail').length === 0){
+    return true;
+  }
   var regEx = /^[A-Za-z0-9._]+@[A-Za-z0-9]+\.[A-Za-z]+$/;
   var email = $('#registerEmail').val();
   console.log(regEx.test(email));
