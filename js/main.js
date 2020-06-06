@@ -21,9 +21,26 @@ function onLoad() {
   if ($('#register').length>0){
     setUpEmailAndPasswordValidation();
   }
+  if ($('#change-password').length>0){
+    setUpNewPasswordValidation();
+  }
   const googleMapsScript = document.createElement("script")
   googleMapsScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDHlWylCMw9F4tCNyrld-seDWF3NEg4vao&callback=initMap'
   document.head.appendChild(googleMapsScript)
+}
+function setUpNewPasswordValidation(){
+  $('#password').on('keyup', validatePasswordsToEnableSubmit);
+  $('#confirm').on('keyup', validatePasswordsToEnableSubmit);
+}
+function validatePasswordsToEnableSubmit(){
+  let submitButton = $('#register').length > 0 ? $('#register') : $('#change-password')
+  if(validatePassword()&&arePasswordsSame()){
+    submitButton.prop('disabled', false);
+    console.log("yes")
+  }else {
+    submitButton.prop('disabled', true);
+    console.log("no")
+  }
 }
 function setUpInputValidation(){
   $('#name').on('keyup', validateInputs);
@@ -188,17 +205,14 @@ function setUpEmailAndPasswordValidation(){
   $('#registerConfirm').on('keyup', validateEmailAndPasswordToEnableSubmit);
 }
 function validateEmail(){
-  if($('#registerEmail').length === 0){
-    return true;
-  }
   var regEx = /^[A-Za-z0-9._]+@[A-Za-z0-9]+\.[A-Za-z]+$/;
   var email = $('#registerEmail').val();
   console.log(regEx.test(email));
   return regEx.test(email);
 }
 function validatePassword(){
-  var password = $('#registerPassword').val();
-
+  var password = $('#registerPassword').length > 0 ? $('#registerPassword').val() : $('#password').val();
+  console.log(password)
   var regEx = /[A-Z]+/;
   if(!regEx.test(password)){
     return false;
@@ -224,16 +238,24 @@ function validatePassword(){
   return true;
 }
 function validateEmailAndPasswordToEnableSubmit(){
+  let submitButton = $('register').length>0 ? $('register') : $('change-password')
   if(validateEmail()&&validatePassword()&&arePasswordsSame()){
-    $('#register').prop('disabled', false);
+    submitButton.prop('disabled', false);
   }else {
-    $('#register').prop('disabled', true);
+    submitButton.prop('disabled', true);
   }
-  console.log(validatePassword());
 }
 function arePasswordsSame(){
     if ($('#registerPassword').val()===$('#registerConfirm').val()){
+      //console.log("same")
+      //return true;
+    }
+    if ($('#password').val()===$('#confirm').val()){
+      console.log("same")
       return true;
     }
-    return false;
+    else {
+      console.log("different")
+      return false;
+    }
 }
