@@ -24,7 +24,7 @@
 
     ?>
     <div class="m-auto">
-      <h6>We have sent a link to reset your password to <b>staticbrandongiampa555@gmail.com</b></h6>
+      <h6>We have sent a link to reset your password.</h6>
     </div>
   </div>
 </main>

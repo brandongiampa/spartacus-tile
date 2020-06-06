@@ -60,7 +60,7 @@
                 $toEmail = $email;
                 $subject = "Spartacus Tile Account Activation";
                 $body = '<h2>Thank you for registering with Spartacus Tile!</h2>';
-                $body .= '<a href="https://www.brandongiampa.com/spartacus-tile/activate-account.php?vkey=' .$vkey .'">Click here to Activate your Account</a>';
+                $body .= '<a href="https://spartacus-tile.brandongiampa.com/activate-account.php?vkey=' .$vkey .'">Click here to Activate your Account</a>';
 
                 $headers = "MIME-Version:1.0"."\r\n";
                 $headers .= "Content-Type:text/html;charset=UTF-8" . "\r\n";

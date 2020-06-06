@@ -35,7 +35,7 @@
         $toEmail = $email;
         $subject = "Spartacus Tile Password Change";
         $body = '<h2>Change Your Password</h2>';
-        $body .= '<a href="https://www.brandongiampa.com/spartacus-tile/change-password.php?vkey='.$vkey.'&email='.$email.'">Click here to Change Your Password</a>';
+        $body .= '<a href="https://spartacus-tile.www.brandongiampa.com/change-password.php?vkey='.$vkey.'&email='.$email.'">Click here to Change Your Password</a>';
 
         $headers = "MIME-Version:1.0"."\r\n";
         $headers .= "Content-Type:text/html;charset=UTF-8" . "\r\n";
