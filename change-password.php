@@ -30,7 +30,7 @@
 
         if(confirmPasswordsMatch($password, $confirm)){
           if(validatePassword($password)){
-            if($db->changePassword($email, $password)){
+            if($db->changePassword($email, $password, $vkey)){
               $_SESSION['loginEmail'] = $email;
             }
             else {warn("There has been an error. Please return to the index page.");}
