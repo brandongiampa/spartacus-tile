@@ -25,7 +25,7 @@ function onLoad() {
     setUpNewPasswordValidation();
   }
   const googleMapsScript = document.createElement("script")
-  googleMapsScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDHlWylCMw9F4tCNyrld-seDWF3NEg4vao&callback=initMap'
+  googleMapsScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyC51FSWFsHFkbRoKcoc_xf2PhzCeLKsKb0&callback=initMap'
   document.head.appendChild(googleMapsScript)
 }
 function setUpNewPasswordValidation(){
